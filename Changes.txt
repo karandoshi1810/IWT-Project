@@ -1,0 +1,34 @@
+How to change profile of logged-in user
+What does select statement return
+Two dropdowns in a single page (typography page)
+Using inbuilt program but date and timepicker is not displaying
+
+
+Notice: Undefined index: uname in D:\users\Software\Xampp\htdocs\Project\Templates\Admin\AdminBSBMaterialDesign-master\index.php on line 298
+
+Notice: Undefined index: email in D:\use
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+->Ward no will replaced by Unique user ID,COmplain ID
+ Request ID in user side tables which is randomly generated. 
+ Which cannot be changed anyhow.
+->Regexes needed for validation of registration fields like pincode,
+mobile number etc.
+->Add mediator module in which admin can add mediators in time management
+->Ask about Ahmedabad RMC Portal
+->Translation of portal to Gujarati/Hindi/English
+->Contact Us

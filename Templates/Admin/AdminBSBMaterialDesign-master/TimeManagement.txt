@@ -1,0 +1,88 @@
+<section class="content">
+        <div class="container-fluid">
+            <div class="card">
+              <div class="container">
+                <form style="margin-top:100px; margin-left: 300px; left: 700px;">
+
+                  <label for="timeChange" style="left: 1000px;">Time Management</label>
+                    <select name="ward" id="ward" size="5">
+                        <option value="Ward-1"> Ward-1 </option>
+                        <option value="Ward-2"> Ward-2 </option>
+                        <option value="Ward-3"> Ward-3 </option>
+                        <option value="Ward-4"> Ward-4 </option>
+                        <option value="Ward-5"> Ward-5 </option>
+                        <option value="Ward-6"> Ward-6 </option>
+                        <option value="Ward-7"> Ward-7 </option>
+                        <option value="Ward-8"> Ward-8 </option>
+                        <option value="Ward-9"> Ward-9 </option>
+                        <option value="Ward-10"> Ward-10 </option>
+
+                        <option value="Ward-11"> Ward-11 </option>
+                        <option value="Ward-12"> Ward-12 </option>
+                        <option value="Ward-13"> Ward-13 </option>
+                        <option value="Ward-14"> Ward-14 </option>
+                        <option value="Ward-15"> Ward-15 </option>
+                        <option value="Ward-16"> Ward-16 </option>
+                        <option value="Ward-17"> Ward-17 </option>
+                        <option value="Ward-18"> Ward-18 </option>
+                        <option value="Ward-19"> Ward-19 </option>
+                        <option value="Ward-20"> Ward-20 </option>
+
+                        <option value="Ward-21"> Ward-21 </option>
+                        <option value="Ward-22"> Ward-22 </option>
+                        <option value="Ward-23"> Ward-23 </option>
+                        <option value="Ward-24"> Ward-24 </option>
+                        <option value="Ward-25"> Ward-25 </option>
+                        <option value="Ward-26"> Ward-26 </option>
+                        <option value="Ward-27"> Ward-27 </option>
+                        <option value="Ward-28"> Ward-28 </option>
+                        <option value="Ward-29"> Ward-29 </option>
+                    </select>
+                    <br><br><br><br><br><br><br>
+
+
+                    <!--DateTime Picker -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card" style="left: -100px; top: -100px;">
+                        <div class="header">
+                            <h2>
+                                DATETIME PICKER
+                            </h2>
+                        </div>
+                        <div class="body">
+                            <div class="row clearfix">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="datepicker form-control" placeholder="Please choose a date...">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="timepicker form-control" placeholder="Please choose a time...">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="datetimepicker form-control" placeholder="Please choose date & time...">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--#END# DateTime Picker -->
+                </form>
+                <!--<input type="datetime-local" name="timings" id="timings" value="Select Time" style="border-image-slice: 2px solid black; margin-left: 470px;left: 700px;">-->
+            </div>
+          </div>
+                 
+        </div>  
+    </section>
