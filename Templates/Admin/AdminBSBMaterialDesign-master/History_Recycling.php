@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -362,23 +366,34 @@ th,td{
             <!-- User Info -->
             <div class="user-info">
                 <div class="image">
-                    <img src="E:/KARAN-ICT/DOCUMENTS/me-removebg.png" width="48" height="48" alt="User" />
+                <img src="/Project/Templates/Admin/AdminBSBMaterialDesign-master/me-removebg.png" width="48" height="48" onerror="this.onerror=null;D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/images/user.png;" alt="Image not found" />
+                    
+                    
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Karan Doshi</div>
-                    <div class="email">karandoshi@gmail.com</div>
-                    <div class="btn-group user-helper-dropdown">
-                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
-                        </ul>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <?php
+                            include 'Connection.php';
+                            //$email = $_POST['email'];
+                            //$password = $_POST['password'];
+                            //$name = $_POST['uname'];
+                            echo $_SESSION["uname"];
+                            echo "<br>";
+                            ?>
                     </div>
+                    <div class="email">
+                            <?php
+                            include 'Connection.php';
+                            //$email = $_POST['email'];
+                            //$password = $_POST['password'];
+                            //$name = $_POST['uname'];
+                            
+                            echo $_SESSION["email"];
+                            
+                            ?>
+
+                    </div>
+                    
                 </div>
             </div>
             <!-- #User Info -->
@@ -387,19 +402,19 @@ th,td{
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="active">
-                        <a href="index.html">
+                        <a href="index.php">
                             <i class="material-icons">home</i>
                             <span>Home</span>
                         </a>
                     </li>
                     <li>
-                        <a href="pages/typography.html">
+                        <a href="pages/typography.php">
                             <i class="material-icons">text_fields</i>
                             <span>Complain Tracking</span>
                         </a>
                     </li>
                     <li>
-                        <a href="TimeManagement.html">
+                        <a href="TimeManagement.php">
                             <i class="material-icons">layers</i>
                             <span>Time Management</span>
                         </a>
@@ -411,45 +426,45 @@ th,td{
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="Recycling.html">
+                                <a href="Recycling.php">
                                     <span>Info</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="pages/TenderSignUp.html">
+                                <a href="pages/TenderSignUp.php">
                                     <span>Tenders</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="pages/History_Recycling.html">
+                                <a href="History_Recycling.php">
                                     <span>History</span>
                                 </a>
                             </li>
                         </ul>
                     </li>
-                    <li>
+                    <!--<li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">swap_calls</i>
                             <span>Complain</span>
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/Leakage.html">Leakage Problem</a>
+                                <a href="pages/Leakage.php">Leakage Problem</a>
                             </li>
                             <li>
-                                <a href="pages/Animals.html">Dying of Animals</a>
+                                <a href="pages/Animals.php">Dying of Animals</a>
                             </li>
                             <li>
-                                <a href="pages/Dustbin.html">Dustbins</a>
+                                <a href="pages/Dustbin.php">Dustbins</a>
                             </li>
 
                             <li>
-                                <a href="pages/Sweeper.html">Sweepers</a>
+                                <a href="pages/Sweeper.php">Sweepers</a>
                             </li>
                             <li>
-                                <a href="pages/Others.html">Others</a>
+                                <a href="pages/Others.php">Others</a>
                             </li>
-                            </li>
+                            </li>-->
                             <!--<li>
                                 <a href="pages/ui/colors.html">Colors</a>
                             </li>

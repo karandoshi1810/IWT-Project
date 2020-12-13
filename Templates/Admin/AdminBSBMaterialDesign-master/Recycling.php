@@ -1,6 +1,7 @@
 <?php
-  session_start();
+session_start();
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -8,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>History</title>
+    <title>Recycling</title>
     <!-- Favicon-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -35,90 +36,34 @@
     <link href="css/themes/all-themes.css" rel="stylesheet" />
 
 
-   <style>
-body {font-family: Arial, Helvetica, sans-serif;}
-* {box-sizing: border-box}
-
-/* Full-width input fields */
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
-}
-
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-}
-
-/* Set a style for all buttons */
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
-
-button:hover {
-  opacity:1;
-}
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-  padding: 14px 20px;
-  background-color: #f44336;
-}
-
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn, .signupbtn {
-  float: left;
-  width: 50%;
-}
-
-/* Add padding to container elements */
-.container {
-  padding: 16px;
-}
-
-/* Clear floats */
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-/* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 300px) {
-  .cancelbtn, .signupbtn {
-     width: 100%;
+    <style>
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 100%;
+    height: 0%;
+    border-radius: 5p;
+    background-color:white;
+    left: 0px;
+    top: 0px;
   }
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-table,th,td{
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-        table.center {
-  margin-left: auto;
-  margin-right: auto;
+img {
+  border-radius: 5px 5px 0 0;
 }
-th,td{
-    padding: 10px;
-    }
+
+.container {
+  padding: 2px 2px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  top: 130px;
+}
 </style>
-
 </head>
 
 <body class="theme-red">
@@ -362,8 +307,8 @@ th,td{
     <section>
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
-            <!-- User Info -->
-            <div class="user-info">
+           <!-- User Info -->
+           <div class="user-info">
                 <div class="image">
                 <img src="/Project/Templates/Admin/AdminBSBMaterialDesign-master/me-removebg.png" width="48" height="48" onerror="this.onerror=null;D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/images/user.png;" alt="Image not found" />
                     
@@ -403,11 +348,12 @@ th,td{
                     <li class="active">
                         <a href="index.php">
                             <i class="material-icons">home</i>
+
                             <span>Home</span>
                         </a>
                     </li>
                     <li>
-                        <a href="pages/typography.php">
+                        <a href="pages/typography.html">
                             <i class="material-icons">text_fields</i>
                             <span>Complain Tracking</span>
                         </a>
@@ -430,7 +376,7 @@ th,td{
                                 </a>
                             </li>
                             <li>
-                                <a href="pages/TenderSignUp.php">
+                                <a href="E:/KARAN-ICT/SEMESTER-5/IWT/Project/Templates/Admin/AdminBSBMaterialDesign-master/pages/examples/sign-up.html">
                                     <span>Tenders</span>
                                 </a>
                             </li>
@@ -447,7 +393,7 @@ th,td{
                             <span>Complain</span>
                         </a>
                         <ul class="ml-menu">
-                          <li>
+                            <li>
                                 <a href="pages/Leakage.php">Leakage Problem</a>
                             </li>
                             <li>
@@ -527,6 +473,21 @@ th,td{
                                 <a href="IoTDustbin.php">Tracking</a>          
                                 <a href="History_Dustbin.php">History</a>
                             </li>
+                            <!--<li>
+                                <a href="pages/forms/advanced-form-elements.html">Advanced Form Elements</a>
+                            </li>
+                            <li>
+                                <a href="pages/forms/form-examples.html">Form Examples</a>
+                            </li>
+                            <li>
+                                <a href="pages/forms/form-validation.html">Form Validation</a>
+                            </li>
+                            <li>
+                                <a href="pages/forms/form-wizard.html">Form Wizard</a>
+                            </li>
+                            <li>
+                                <a href="pages/forms/editors.html">Editors</a>
+                            </li>-->
                         </ul>
                     </li>
                     <!--<li>
@@ -858,31 +819,21 @@ th,td{
 
     <section class="content">
         <div class="container-fluid">
-          <h1 style="background-color:#00BFFF"><marquee direction:="right">Welcome to history of IoT Dustbin</marquee></h1>
-        </div> 
-         <div>
-            <table style="position: relative;height: 300px; top: 170px;color:white;font-family: Times Roman;" class="center">
-        <tr>
-            <th style=" background-color: #FF1493"><b>UNIQUE ID</b></th>
-            <th style="width: 80%; background-color: #FF1493"><b>DESCRIPTION</b></th>
-        </tr>
-
-        <tr style="background-color: #33BBC1;text-align: center;">
-            <td>TESTING 1</td>
-            <td>DESCRIPTION 1</td>
-        </tr>
-
-        <tr style="background-color: #33BBC1;text-align: center;">
-            <td>TESTING 2</td>
-            <td>DESCRIPTION 2</td>
-        </tr>
-
-        <tr style="background-color: #33BBC1; text-align:center;">
-            <td>TESTING 3</td>
-            <td>DESCRIPTION 3</td>
-        </tr>
-    </table>
-        </div> 
+              <div class="card">
+        <div class="container">
+            <br><br>
+          <label style="margin-left: 400px;top: -50px;">Waste Collection Area:</label><input type="text" name="recycling" id="recycling" style="border: 2px solid black;">
+          <br><br>
+          <label style="margin-left: 400px;position: relative;left: 20px;">Dry Waste Weight:</label><input type="pincode" name="Waste Weight" id="DryWasteWeight" style="border: 2px solid black; position: relative; left: 30px;">
+          <br><br>
+          <label style="margin-left: 400px;position: relative;left: 20px;">Dumping Ground:</label><input type="text" name="dg" id="dumpingGround" style="border: 2px solid black;position: relative;left: 35px;">
+          <br><br>
+          <input type="button" name="tender" id="t&d" value="Tender" style="margin-left: 80px; position: relative;left: 400px;" onclick="window.location.href='E:/KARAN-ICT/SEMESTER-5/IWT/Project/Templates/Admin/AdminBSBMaterialDesign-master/pages/examples/sign-up.html';">
+          <input type="button" name="history" id="history" value="History" style="margin-left: 80px;position: relative;left:400px;" onclick="window.location.href='History_Recycling.html';">
+          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        </div>
+    </div>
+        </div>  
     </section>
 
     <!-- Jquery Core Js -->

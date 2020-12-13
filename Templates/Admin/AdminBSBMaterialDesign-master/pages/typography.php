@@ -324,7 +324,7 @@
             <!-- User Info -->
             <div class="user-info">
                 <div class="image">
-                    <img src="D:\users\Software\Xampp\htdocs\Project\Templates\Admin\AdminBSBMaterialDesign-master\me-removebg.png" width="48" height="48" onerror="this.src='D:\users\Software\Xampp\htdocs\Project\Templates\Admin\AdminBSBMaterialDesign-master\images\user.png';" alt="Image not found" />
+                <img src="/Project/Templates/Admin/AdminBSBMaterialDesign-master/me-removebg.png" width="48" height="48" onerror="this.onerror=null;D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/images/user.png;" alt="Image not found" />
                     
                     
                 </div>
@@ -346,7 +346,6 @@
                             //$email = $_POST['email'];
                             //$password = $_POST['password'];
                             //$name = $_POST['uname'];
-                            
                             echo $_SESSION["email"];
                             
                             ?>
@@ -361,7 +360,7 @@
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
                     <li>
-                        <a href="/Project/Templates/Admin/AdminBSBMaterialDesign-master/index.php">
+                        <a href="../index.php">
                             <i class="material-icons">home</i>
                             <span>Home</span>
                         </a>
@@ -373,7 +372,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/Project/Templates/Admin/AdminBSBMaterialDesign-master/TimeManagement.php">
+                        <a href="../TimeManagement.php">
                             <i class="material-icons">layers</i>
                             <span>Time Management</span>
                         </a>
@@ -385,24 +384,49 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="/Project/Templates/Admin/AdminBSBMaterialDesign-master/Recycling.php">
+                                <a href="../Recycling.php">
                                     <span>Info</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="E:/KARAN-ICT/SEMESTER-5/IWT/Project/Templates/Admin/AdminBSBMaterialDesign-master/pages/examples/sign-up.html">
+                                <a href="E:/KARAN-ICT/SEMESTER-5/IWT/Project/Templates/Admin/AdminBSBMaterialDesign-master/pages/examples/sign-up.php">
                                     <span>Tenders</span>
                                 </a>
                                
                             </li>
 
                             <li>
-                               <a href="E:/KARAN-ICT/SEMESTER-5/IWT/Project/Templates/Admin/AdminBSBMaterialDesign-master/History_Recycling.html">
+                               <a href="../History_Recycling.php">
                                     <span>History</span>
                                 </a>
                             </li>
                         </ul>
                     </li>
+
+                    <!--<li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">swap_calls</i>
+                            <span>Complain</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="Leakage.php">Leakage Problem</a>
+                            </li>
+                            <li>
+                                <a href="Animals.php">Dying of Animals</a>
+                            </li>
+                            <li>
+                                <a href="Dustbin.php">Dustbins</a>
+                            </li>
+
+                            <li>
+                                <a href="Sweeper.php">Sweepers</a>
+                            </li>
+                            <li>
+                                <a href="Others.php">Others</a>
+                            </li>
+                        </ul>
+                    </li>-->
 
                     <li>
                          <a href="javascript:void(0);" class="menu-toggle">
@@ -411,91 +435,13 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="/Project/Templates/Admin/AdminBSBMaterialDesign-master/IoTDustbin.php">Tracking</a>          
-                                <a href="/Project/Templates/Admin/AdminBSBMaterialDesign-master/History_Dustbin.php">History</a>
+                                <a href="../IoTDustbin.php">Tracking</a>          
+                                <a href="../History_Dustbin.php">History</a>
                             </li>
                         </ul>
                     </li>
 
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">swap_calls</i>
-                            <span>Complain</span>
-                        </a>
-                        <ul class="ml-menu">
-                           <li>
-                                <a href="E:/KARAN-ICT/SEMESTER-5/IWT/Project/Templates/Admin/AdminBSBMaterialDesign-master/pages/Leakage.html">Leakage Problem</a>
-                            </li>
-                            <li>
-                                <a href="E:/KARAN-ICT/SEMESTER-5/IWT/Project/Templates/Admin/AdminBSBMaterialDesign-master/pages/Animals.html">Dying of Animals</a>
-                            </li>
-                            <li>
-                                <a href="E:/KARAN-ICT/SEMESTER-5/IWT/Project/Templates/Admin/AdminBSBMaterialDesign-master/pages/Dustbin.html">Dustbins</a>
-                            </li>
-
-                            <li>
-                                <a href="E:/KARAN-ICT/SEMESTER-5/IWT/Project/Templates/Admin/AdminBSBMaterialDesign-master/pages/Sweeper.html">Sweepers</a>
-                            </li>
-                            <li>
-                                <a href="E:/KARAN-ICT/SEMESTER-5/IWT/Project/Templates/Admin/AdminBSBMaterialDesign-master/pages/Others.html">Others</a>
-                            </li>
-
-                            <!--<li>
-                                <a href="../pages/ui/collapse.html">Collapse</a>
-                            </li>
-                            <li>
-                                <a href="../pages/ui/colors.html">Colors</a>
-                            </li>
-                            <li>
-                                <a href="../pages/ui/dialogs.html">Dialogs</a>
-                            </li>
-                            <li>
-                                <a href="../pages/ui/icons.html">Icons</a>
-                            </li>
-                            <li>
-                                <a href="../pages/ui/labels.html">Labels</a>
-                            </li>
-                            <li>
-                                <a href="../pages/ui/list-group.html">List Group</a>
-                            </li>
-                            <li>
-                                <a href="../pages/ui/media-object.html">Media Object</a>
-                            </li>
-                            <li>
-                                <a href="../pages/ui/modals.html">Modals</a>
-                            </li>
-                            <li>
-                                <a href="../pages/ui/notifications.html">Notifications</a>
-                            </li>
-                            <li>
-                                <a href="../pages/ui/pagination.html">Pagination</a>
-                            </li>
-                            <li>
-                                <a href="../pages/ui/preloaders.html">Preloaders</a>
-                            </li>
-                            <li>
-                                <a href="../pages/ui/progressbars.html">Progress Bars</a>
-                            </li>
-                            <li>
-                                <a href="../pages/ui/range-sliders.html">Range Sliders</a>
-                            </li>
-                            <li>
-                                <a href="../pages/ui/sortable-nestable.html">Sortable & Nestable</a>
-                            </li>
-                            <li>
-                                <a href="../pages/ui/tabs.html">Tabs</a>
-                            </li>
-                            <li>
-                                <a href="../pages/ui/thumbnails.html">Thumbnails</a>
-                            </li>
-                            <li>
-                                <a href="../pages/ui/tooltips-popovers.html">Tooltips & Popovers</a>
-                            </li>
-                            <li>
-                                <a href="../pages/ui/waves.html">Waves</a>
-                            </li>
-                        </ul>-->
-                    </li>
+                    
                     
                     <!--<li>
                         <a href="javascript:void(0);" class="menu-toggle">

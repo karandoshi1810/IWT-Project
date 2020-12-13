@@ -5,11 +5,6 @@
 <html>
 
 <head>
-
-
-
-
-    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -285,7 +280,7 @@
             <!-- User Info -->
             <div class="user-info">
                 <div class="image">
-                    <img src="D:\users\Software\Xampp\htdocs\Project\Templates\Admin\AdminBSBMaterialDesign-master\me-removebg.png" width="48" height="48" onerror="this.src='D:\users\Software\Xampp\htdocs\Project\Templates\Admin\AdminBSBMaterialDesign-master\images\user.png';" alt="Image not found" />
+                    <img src="/Project/Templates/Admin/AdminBSBMaterialDesign-master/me-removebg.png" width="48" height="48" onerror="this.onerror=null;D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/images/user.png;" alt="Image not found" />
                     
                     
                 </div>
@@ -345,12 +340,12 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="Recycling.html">
+                                <a href="Recycling.php">
                                     <span>Info</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="E:/KARAN-ICT/SEMESTER-5/IWT/Project/Templates/Admin/AdminBSBMaterialDesign-master/pages/examples/sign-up.html">
+                                <a href="E:/KARAN-ICT/SEMESTER-5/IWT/Project/Templates/Admin/AdminBSBMaterialDesign-master/pages/examples/sign-up.php">
                                     <span>Tenders</span>
                                 </a>
                             </li>
@@ -361,7 +356,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
+                    <!--<li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">swap_calls</i>
                             <span>Complain</span>
@@ -384,7 +379,7 @@
                                 <a href="pages/Others.php">Others</a>
                             </li>
                         </ul>
-                    </li>
+                    </li>-->
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">assignment</i>
@@ -392,8 +387,8 @@
                         </a>
                          <ul class="ml-menu">
                             <li>
-                                <a href="/Project/Templates/Admin/AdminBSBMaterialDesign-master/IoTDustbin.php">Tracking</a>
-                                <a href="/Project/Templates/Admin/AdminBSBMaterialDesign-master/History_Dustbin.php">History</a>
+                                <a href="IoTDustbin.php">Tracking</a>
+                                <a href="History_Dustbin.php">History</a>
                             </li>
                             <!--<li>
                                 <a href="pages/forms/advanced-form-elements.html">Advanced Form Elements</a>

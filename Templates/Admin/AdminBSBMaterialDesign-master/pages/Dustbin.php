@@ -155,7 +155,7 @@ th,td{
             <!-- User Info -->
             <div class="user-info">
                 <div class="image">
-                    <img src="D:\users\Software\Xampp\htdocs\Project\Templates\Admin\AdminBSBMaterialDesign-master\me-removebg.png" width="48" height="48" onerror="this.src='D:\users\Software\Xampp\htdocs\Project\Templates\Admin\AdminBSBMaterialDesign-master\images\user.png';" alt="Image not found" />
+                <img src="/Project/Templates/Admin/AdminBSBMaterialDesign-master/me-removebg.png" width="48" height="48" onerror="this.onerror=null;D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/images/user.png;" alt="Image not found" />
                     
                     
                 </div>
@@ -187,24 +187,24 @@ th,td{
                 </div>
             </div>
             <!-- #User Info -->
-            <!-- Menu -->
-            <div class="menu">
+           <!-- Menu -->
+           <div class="menu">
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
                     <li>
-                        <a href="../index.html">
+                        <a href="../index.php">
                             <i class="material-icons">home</i>
                             <span>Home</span>
                         </a>
                     </li>
                     <li class="active">
-                        <a href="../pages/typography.php">
+                        <a href="typography.php">
                             <i class="material-icons">text_fields</i>
                             <span>Complain Tracking</span>
                         </a>
                     </li>
                     <li>
-                        <a href="D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/TimeManagement.php">
+                        <a href="../TimeManagement.php">
                             <i class="material-icons">layers</i>
                             <span>Time Management</span>
                         </a>
@@ -216,19 +216,19 @@ th,td{
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/Recycling.html">
+                                <a href="../Recycling.php">
                                     <span>Info</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/pages/examples/sign-up.php">
+                                <a href="/examples/sign-up.php">
                                     <span>Tenders</span>
                                 </a>
                                
                             </li>
 
                             <li>
-                               <a href="D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/History_Recycling.html">
+                               <a href="../History_Recycling.php">
                                     <span>History</span>
                                 </a>
                             </li>
@@ -242,35 +242,35 @@ th,td{
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/IoTDustbin.html">Tracking</a>          
-                                <a href="D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/History_Dustbin.html">History</a>
+                                <a href="../IoTDustbin.php">Tracking</a>          
+                                <a href="../History_Dustbin.html">History</a>
                             </li>
                         </ul>
                     </li>
 
-                    <li>
+                    <!--<li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">swap_calls</i>
                             <span>Complain</span>
                         </a>
                         <ul class="ml-menu">
                            <li>
-                                <a href="D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/pages/Leakage.php">Leakage Problem</a>
+                                <a href="Leakage.php">Leakage Problem</a>
                             </li>
                             <li>
-                                <a href="D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/pages/Animals.php">Dying of Animals</a>
+                                <a href="Animals.php">Dying of Animals</a>
                             </li>
                             <li>
-                                <a href="D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/pages/Dustbin.php">Dustbins</a>
+                                <a href="Dustbin.php">Dustbins</a>
                             </li>
 
                             <li>
-                                <a href="D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/pages/Sweeper.php">Sweepers</a>
+                                <a href="Sweeper.php">Sweepers</a>
                             </li>
                             <li>
-                                <a href="D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/pages/Others.php">Others</a>
+                                <a href="Others.php">Others</a>
                             </li>
-                    </li>
+                    </li>-->
                     
                    
             </div>
