@@ -1,5 +1,21 @@
 <?php
-session_start();
+    session_start();
+
+    if(isset($_POST['changeTime']))
+    {
+        $affected_ward = $_POST['ward'];
+        $new_time = $_POST['datetime'];
+        $to_email = "karan.doshi105417@marwadiuniversity.ac.in";
+        if (mail('karan.doshi105417@marwadiuniversity.ac.in', 'New timings for water in your => '. $affected_ward, 'The updated timings for household water in your ward from tomorrow is=>'. $new_time, 'From: karan.doshi105417@marwadiuniversity.ac.in')) 
+        {
+            echo '<script> alert("Updated timings sent successfully.") </script>';
+        } 
+        else 
+        {
+            echo '<script> alert("Updated timings cannot be sent successfully.") </script>';
+        }
+    }
+    
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,13 +33,19 @@ session_start();
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap Core Css -->
-    <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet"/>
 
     <!-- Waves Effect Css -->
     <link href="plugins/node-waves/waves.css" rel="stylesheet" />
 
     <!-- Animation Css -->
     <link href="plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- Bootstrap Material Datetime Picker Css -->
+    <link href="/Project/Templates/Admin/AdminBSBMaterialDesign-master/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+
+    <!-- Bootstrap DatePicker Css -->
+    <link href="/plugins/bootstrap-material-datetimepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
 
     <!-- Morris Chart Css-->
     <link href="plugins/morrisjs/morris.css" rel="stylesheet" />
@@ -385,7 +407,7 @@ img {
                         </ul>
                     </li>
                    
-                        </ul>
+                        
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
@@ -553,90 +575,52 @@ img {
     <section class="content">
         <div class="container-fluid">
             <div class="card">
-              <div class="container">
-                <form style="margin-top:100px; margin-left: 300px; left: 700px;">
+                <div class="container">
+                        <form style="margin-top:100px; margin-left: 300px; left: 700px;"  method = "POST">
 
-                  <label for="timeChange" style="left: 1000px;">Time Management</label>
-                    <select name="ward" id="ward" size="5">
-                        <option value="Ward-1"> Ward-1 </option>
-                        <option value="Ward-2"> Ward-2 </option>
-                        <option value="Ward-3"> Ward-3 </option>
-                        <option value="Ward-4"> Ward-4 </option>
-                        <option value="Ward-5"> Ward-5 </option>
-                        <option value="Ward-6"> Ward-6 </option>
-                        <option value="Ward-7"> Ward-7 </option>
-                        <option value="Ward-8"> Ward-8 </option>
-                        <option value="Ward-9"> Ward-9 </option>
-                        <option value="Ward-10"> Ward-10 </option>
+                                <select name="ward" id="ward" size="1">
+                                    <option value="Ward-1"> Ward-1 </option>
+                                    <option value="Ward-2"> Ward-2 </option>
+                                    <option value="Ward-3"> Ward-3 </option>
+                                    <option value="Ward-4"> Ward-4 </option>
+                                    <option value="Ward-5"> Ward-5 </option>
+                                    <option value="Ward-6"> Ward-6 </option>
+                                    <option value="Ward-7"> Ward-7 </option>
+                                    <option value="Ward-8"> Ward-8 </option>
+                                    <option value="Ward-9"> Ward-9 </option>
+                                    <option value="Ward-10"> Ward-10 </option>
 
-                        <option value="Ward-11"> Ward-11 </option>
-                        <option value="Ward-12"> Ward-12 </option>
-                        <option value="Ward-13"> Ward-13 </option>
-                        <option value="Ward-14"> Ward-14 </option>
-                        <option value="Ward-15"> Ward-15 </option>
-                        <option value="Ward-16"> Ward-16 </option>
-                        <option value="Ward-17"> Ward-17 </option>
-                        <option value="Ward-18"> Ward-18 </option>
-                        <option value="Ward-19"> Ward-19 </option>
-                        <option value="Ward-20"> Ward-20 </option>
+                                    <option value="Ward-11"> Ward-11 </option>
+                                    <option value="Ward-12"> Ward-12 </option>
+                                    <option value="Ward-13"> Ward-13 </option>
+                                    <option value="Ward-14"> Ward-14 </option>
+                                    <option value="Ward-15"> Ward-15 </option>
+                                    <option value="Ward-16"> Ward-16 </option>
+                                    <option value="Ward-17"> Ward-17 </option>
+                                    <option value="Ward-18"> Ward-18 </option>
+                                    <option value="Ward-19"> Ward-19 </option>
+                                    <option value="Ward-20"> Ward-20 </option>
 
-                        <option value="Ward-21"> Ward-21 </option>
-                        <option value="Ward-22"> Ward-22 </option>
-                        <option value="Ward-23"> Ward-23 </option>
-                        <option value="Ward-24"> Ward-24 </option>
-                        <option value="Ward-25"> Ward-25 </option>
-                        <option value="Ward-26"> Ward-26 </option>
-                        <option value="Ward-27"> Ward-27 </option>
-                        <option value="Ward-28"> Ward-28 </option>
-                        <option value="Ward-29"> Ward-29 </option>
-                    </select>
-                    <br><br><br><br><br><br><br>
-
-
-                    <!--DateTime Picker -->
-            <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card" style="left: -100px; top: -100px;">
-                        <div class="header">
-                            <h2>
-                                DATETIME PICKER
-                            </h2>
-                        </div>
-                        <div class="body">
-                            <div class="row clearfix">
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="datepicker form-control" placeholder="Please choose a date...">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="timepicker form-control" placeholder="Please choose a time...">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="datetimepicker form-control" placeholder="Please choose date & time...">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                    <option value="Ward-21"> Ward-21 </option>
+                                    <option value="Ward-22"> Ward-22 </option>
+                                    <option value="Ward-23"> Ward-23 </option>
+                                    <option value="Ward-24"> Ward-24 </option>
+                                    <option value="Ward-25"> Ward-25 </option>
+                                    <option value="Ward-26"> Ward-26 </option>
+                                    <option value="Ward-27"> Ward-27 </option>
+                                    <option value="Ward-28"> Ward-28 </option>
+                                    <option value="Ward-29"> Ward-29 </option>
+                                </select>
+                                <br><br><br><br><br><br><br/>
+                            <!--DateTime Picker -->
+                            <label for="datetime">Choose a date and time:</label>
+                            <input type="datetime-local" id="datetime" name="datetime"><br><br>
+                            <input type="submit" value = "Change Time" name = "changeTime"><br><br>
+                            <!--#END# DateTime Picker -->
+                        </form>
                 </div>
             </div>
-            <!--#END# DateTime Picker -->
-                </form>
-                <!--<input type="datetime-local" name="timings" id="timings" value="Select Time" style="border-image-slice: 2px solid black; margin-left: 470px;left: 700px;">-->
-            </div>
-          </div>
-                 
-        </div>  
+        </div>
     </section>
 
     <!-- Jquery Core Js -->
@@ -653,6 +637,18 @@ img {
 
     <!-- Waves Effect Plugin Js -->
     <script src="plugins/node-waves/waves.js"></script>
+
+    <!-- Autosize Plugin Js -->
+    <script src="plugins/autosize/autosize.js"></script>
+
+    <!-- Moment Plugin Js -->
+    <script src="plugins/momentjs/moment.js"></script>
+
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+    <script src="plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+
+    <!-- Bootstrap Datepicker Plugin Js -->
+    <script src="plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 
     <!-- Jquery CountTo Plugin Js -->
     <script src="plugins/jquery-countto/jquery.countTo.js"></script>
@@ -680,6 +676,8 @@ img {
 
     <!-- Demo Js -->
     <script src="js/demo.js"></script>
+
+    
 </body>
 
 </html>
