@@ -3,7 +3,7 @@
     include "Connection.php";
     if(!isset($_SESSION['admin'])){
         header("location:pages/examples/sign-in.php");
-        die("Please register or log-in first");
+        die();
      }
 ?>
 

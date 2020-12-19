@@ -4,9 +4,8 @@
     if(!isset($_SESSION['admin'])){
         header("location:pages/examples/sign-in.php");
         die();
-     }
+    }
 ?>
-
 <!DOCTYPE html>
 <html>
 
@@ -14,7 +13,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>History</title>
+    <title>Feedback</title>
     <!-- Favicon-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -26,10 +25,17 @@
     <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- Waves Effect Css -->
-    <link href="plugins/node-waves/waves.css" rel="stylesheet" />
+    <a href="plugins/node-waves/waves.css" rel="stylesheet">
 
     <!-- Animation Css -->
     <link href="plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- JQuery DataTable Css -->
+    <link href="plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+
+     <!-- Range Slider Css -->
+     <link href="plugins/ion-rangeslider/css/ion.rangeSlider.css" rel="stylesheet" />
+    <link href="plugins/ion-rangeslider/css/ion.rangeSlider.skinFlat.css" rel="stylesheet" />
 
     <!-- Morris Chart Css-->
     <link href="plugins/morrisjs/morris.css" rel="stylesheet" />
@@ -39,95 +45,10 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="css/themes/all-themes.css" rel="stylesheet" />
-
-
-   <style>
-body {font-family: Arial, Helvetica, sans-serif;}
-* {box-sizing: border-box}
-
-/* Full-width input fields */
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
-}
-
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-}
-
-/* Set a style for all buttons */
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
-
-button:hover {
-  opacity:1;
-}
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-  padding: 14px 20px;
-  background-color: #f44336;
-}
-
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn, .signupbtn {
-  float: left;
-  width: 50%;
-}
-
-/* Add padding to container elements */
-.container {
-  padding: 16px;
-}
-
-/* Clear floats */
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-/* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 300px) {
-  .cancelbtn, .signupbtn {
-     width: 100%;
-  }
-}
-
-table,th,td{
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-        table.center {
-  margin-left: auto;
-  margin-right: auto;
-}
-th,td{
-    padding: 10px;
-    }
-</style>
-
 </head>
 
 <body class="theme-orange">
+
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -153,7 +74,7 @@ th,td{
         <div class="search-icon">
             <i class="material-icons">search</i>
         </div>
-        <input type="text" placeholder="START TYPING...">
+        <input type="text" placeholder="TYPE TO SEARCH...">
         <div class="close-search">
             <i class="material-icons">close</i>
         </div>
@@ -184,11 +105,9 @@ th,td{
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
             <!-- User Info -->
-            <div class="user-info">
+            <div class="user-info" style="background-color: #FA8821">
                 <div class="image">
-                <img src="/Project/Templates/Admin/AdminBSBMaterialDesign-master/me-removebg.png" width="48" height="48" onerror="this.onerror=null;D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/images/user.png;" alt="Image not found" />
-                    
-                    
+                    <img src="/Project/Templates/Admin/AdminBSBMaterialDesign-master/me-removebg.png" width="48" height="48" onerror="this.onerror=null;D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/images/user.png;" alt="Image not found" />   
                 </div>
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -217,9 +136,10 @@ th,td{
                 </div>
             </div>
             <!-- #User Info -->
-                        <!-- Menu -->
-                        <div class="menu">
+            <!-- Menu -->
+            <div class="menu">
                 <ul class="list">
+                <!--<li class="header">MAIN NAVIGATION</li>-->
                     <li>
                         <a href="index.php">
                             <i class="material-icons">home</i>
@@ -261,7 +181,7 @@ th,td{
                             </li>
                         </ul>
                     </li>
-                    <li class = "active">
+                    <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">assignment</i>
                             <span>IoT Dustbin</span>
@@ -273,7 +193,8 @@ th,td{
                             </li>
                         </ul>
                     </li>
-                    <li>
+
+                    <li class="active">
                         <a href="Feedback.php">
                             <i class="material-icons">feedback</i>
                             <span>Feedback</span>
@@ -282,43 +203,70 @@ th,td{
                 </ul>
             </div>
             <!-- #Menu -->
+            <!-- Footer -->
+            <!--<div class="legal">
+                <div class="copyright">
+                    &copy; 2020 - 2021 <a href="javascript:void(0);">Water and Cleanliness Management</a>.
+                </div>     
+                <div class="version">
+                    <b>Version: </b> 1.0.0
+                </div>
+            </div>-->
+            <!-- #Footer -->
         </aside>
-    </section>
         <!-- #END# Left Sidebar -->
-        
-    <section class="content">
-        <div class="container-fluid">
-          <h1 style="background-color:#00BFFF"> <marquee direction:="right">Welcome to history</marquee> </h1>
-        </div>
-        <div>
-            <table style="position: relative;height: 300px; top: 170px;color:white;font-family: Times Roman;" class="center">
-        <tr>
-            <th style=" background-color: #FF1493"><b>UNIQUE ID</b></th>
-            <th style="width: 80%; background-color: #FF1493"><b>DESCRIPTION</b></th>
-        </tr>
-
-        <tr style="background-color: #33BBC1;text-align: center;">
-            <td>TESTING 1</td>
-            <td>DESCRIPTION 1</td>
-        </tr>
-
-        <tr style="background-color: #33BBC1;text-align: center;">
-            <td>TESTING 2</td>
-            <td>DESCRIPTION 2</td>
-        </tr>
-
-        <tr style="background-color: #33BBC1; text-align:center;">
-            <td>TESTING 3</td>
-            <td>DESCRIPTION 3</td>
-        </tr>
-    </table>
-        </div> 
     </section>
 
-    <!-- Jquery Core Js -->
-    <script src="plugins/jquery/jquery.min.js"></script>
+    <section class="content">
+                <div class="row clearfix">
+                <!-- Show Feedback -->
+                <div class="col-lg-12 col-md-10 col-sm-10 col-xs-10">
+                    <div class="card">
+                        <div class="header bg-red">
+                            <h2>FEEDBACKS</h2>
+                        </div>
+                        
+                        <div class="body">
+                        <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover js-exportable">
+                                    <thead>
+                                        <tr>
+                                            <th>USER-ID</th>
+                                            <th>ADDRESS</th>
+                                            <th>FEEDBACK</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                            $server = "localhost";
+                                            $user = "root";
+                                            $pass = "";
+                                            $dbname = "user";
+                                            $conn = mysqli_connect($server,$user,$pass,$dbname);
+                                            $sql = "select * from feedback";
+                                            $result = mysqli_query($conn,$sql);
 
-    <!-- Bootstrap Core Js -->
+
+                                            while ($row=mysqli_fetch_array($result)) {
+                                                echo "<tr>";
+                                                echo "<td>".$row['uniqueid']."</td>";
+                                                echo "<td>".$row['address']."</td>";
+                                                echo "<td>".$row['typefeedback']."</td>";
+                                                echo "</tr>";
+                                            }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        <!--#End# Show Feedback-->
+    </section>
+     <!-- Jquery Core Js -->
+     <script src="plugins/jquery/jquery.min.js"></script>
+
+        <!-- Bootstrap Core Js -->
     <script src="plugins/bootstrap/js/bootstrap.js"></script>
 
     <!-- Select Plugin Js -->
@@ -326,6 +274,9 @@ th,td{
 
     <!-- Slimscroll Plugin Js -->
     <script src="plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+     <!-- Bootstrap Notify Plugin Js -->
+     <script src="../../plugins/bootstrap-notify/bootstrap-notify.js"></script>
 
     <!-- Waves Effect Plugin Js -->
     <script src="plugins/node-waves/waves.js"></script>
@@ -350,9 +301,23 @@ th,td{
     <!-- Sparkline Chart Plugin Js -->
     <script src="plugins/jquery-sparkline/jquery.sparkline.js"></script>
 
+    <!-- RangeSlider Plugin Js -->
+    <script src="../../plugins/ion-rangeslider/js/ion.rangeSlider.js"></script>
+
     <!-- Custom Js -->
     <script src="js/admin.js"></script>
     <script src="js/pages/index.js"></script>
+
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
 
     <!-- Demo Js -->
     <script src="js/demo.js"></script>

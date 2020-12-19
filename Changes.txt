@@ -4,25 +4,7 @@ Two dropdowns in a single page (typography page)
 Using inbuilt program but date and timepicker is not displaying
 
 
-Notice: Undefined index: uname in D:\users\Software\Xampp\htdocs\Project\Templates\Admin\AdminBSBMaterialDesign-master\index.php on line 298
-
 Notice: Undefined index: email in D:\use
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ->Ward no will replaced by Unique user ID,COmplain ID
  Request ID in user side tables which is randomly generated. 
  Which cannot be changed anyhow.
@@ -30,5 +12,11 @@ Notice: Undefined index: email in D:\use
 mobile number etc.
 ->Add mediator module in which admin can add mediators in time management
 ->Ask about Ahmedabad RMC Portal
-->Translation of portal to Gujarati/Hindi/English
-->Contact Us
+
+->Home Page Statitics
+->Send mail to user when status of complain is changed by admin
+->Send mail to user when status of complain is changed by admin in 
+  recycling
+->When Admin changes status of complain it should be visible to user
+
+

@@ -12,12 +12,11 @@ if(isset($_POST['register']))
 	if(mysqli_query($conn,$sql))
 	{
 		echo "Record Saved";
+		header("Location:index.php");
+		
 		$_SESSION["uname"] = $namesurname;
 		$_SESSION["email"] = $email;
-		$_SESSION['admin'] = true;
-		header("Location:../../index.php");
-
-		
+		$_SESSION["admin"] = true;	
 	}
 	else
 	{

@@ -1,51 +1,11 @@
-<!--<!DOCTYPE html>
-<html>
-<head>
-	<title>Animals Problem</title>
-	<style type="text/css">
-		table,th,td{
-			border: 1px solid black;
-  			border-collapse: collapse;
-		}
-		table.center {
-  margin-left: auto;
-  margin-right: auto;
-}
-th,td{
-	padding: 10px;
-	}
-	</style>
-}
-</head>
-<body>
-	<table style="position: relative;height: 300px; top: 170px;color:white;font-family: Times Roman;" class="center">
-		<tr>
-			<th style=" background-color: #FF1493"><b>UNIQUE ID</b></th>
-			<th style="width: 80%; background-color: #FF1493"><b>DESCRIPTION</b></th>
-		</tr>
-
-		<tr style="background-color: #33BBC1;text-align: center;">
-			<td>TESTING 1</td>
-			<td>DESCRIPTION 1</td>
-		</tr>
-
-		<tr style="background-color: #33BBC1;text-align: center;">
-			<td>TESTING 2</td>
-			<td>DESCRIPTION 2</td>
-		</tr>
-
-		<tr style="background-color: #33BBC1; text-align:center;">
-			<td>TESTING 3</td>
-			<td>DESCRIPTION 3</td>
-		</tr>
-	</table>
-</body>
-</html>-->
-
-
 
 <?php
     session_start();
+    include "Connection.php";
+    if(!isset($_SESSION['admin'])){
+        header("location:sign-in.php");
+        die();
+     }
 ?>
 <!DOCTYPE html>
 <html>
@@ -76,28 +36,12 @@ th,td{
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="../css/themes/all-themes.css" rel="stylesheet" />    
-<style type="text/css">
-  table,th,td{
-            border: 1px solid black;
-            border-collapse: collapse;
-            align-self: center;
-            margin-left: 300px;
-            background-color: #FF5722;
-            margin-top: 100px;
-
-        }
-  
-th,td{
-    background-color:pink; 
-    padding: 10px;
-    }
-	</style>
 }
 
 </style>
 </head>
 
-<body class="theme-red">
+<body class="theme-orange">
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -135,7 +79,7 @@ th,td{
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="widgets/../../index.html">Cleanliness and Water Management</a>
+                <a class="navbar-brand" href="../index.php">Cleanliness and Water Management</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -191,7 +135,6 @@ th,td{
             <!-- Menu -->
             <div class="menu">
                 <ul class="list">
-                    <li class="header">MAIN NAVIGATION</li>
                     <li>
                         <a href="../index.php">
                             <i class="material-icons">home</i>
@@ -244,146 +187,72 @@ th,td{
                         <ul class="ml-menu">
                             <li>
                                 <a href="../IoTDustbin.php">Tracking</a>          
-                                <a href="../History_Dustbin.html">History</a>
+                                <a href="../History_Dustbin.php">History</a>
                             </li>
                         </ul>
                     </li>
-
-                    <!--<li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">swap_calls</i>
-                            <span>Complain</span>
+                    <li>
+                        <a href="Feedback.php">
+                            <i class="material-icons">feedback</i>
+                            <span>Feedback</span>
                         </a>
-                        <ul class="ml-menu">
-                           <li>
-                                <a href="Leakage.php">Leakage Problem</a>
-                            </li>
-                            <li>
-                                <a href="Animals.php">Dying of Animals</a>
-                            </li>
-                            <li>
-                                <a href="Dustbin.php">Dustbins</a>
-                            </li>
-
-                            <li>
-                                <a href="Sweeper.php">Sweepers</a>
-                            </li>
-                            <li>
-                                <a href="Others.php">Others</a>
-                            </li>
-                    </li>-->
-                    
-                   
+                    </li>
+                </ul>
             </div>
             <!-- #Menu -->
            
         </aside>
         <!-- #END# Left Sidebar -->
-        <!-- Right Sidebar -->
-        <aside id="rightsidebar" class="right-sidebar">
-            <ul class="nav nav-tabs tab-nav-right" role="tablist">
-               
-                <li role="presentation"><a href="#settings" data-toggle="tab">SETTINGS</a></li>
-            </ul>
-            <div class="tab-content">
-               
-                <div role="tabpanel" class="tab-pane fade" id="settings">
-                    <div class="demo-settings">
-                        <p>GENERAL SETTINGS</p>
-                        <ul class="setting-list">
-                            <li>
-                                <span>Report Panel Usage</span>
-                                <div class="switch">
-                                    <label><input type="checkbox" checked><span class="lever"></span></label>
-                                </div>
-                            </li>
-                            <li>
-                                <span>Email Redirect</span>
-                                <div class="switch">
-                                    <label><input type="checkbox"><span class="lever"></span></label>
-                                </div>
-                            </li>
-                        </ul>
-                        <p>SYSTEM SETTINGS</p>
-                        <ul class="setting-list">
-                            <li>
-                                <span>Notifications</span>
-                                <div class="switch">
-                                    <label><input type="checkbox" checked><span class="lever"></span></label>
-                                </div>
-                            </li>
-                            <li>
-                                <span>Auto Updates</span>
-                                <div class="switch">
-                                    <label><input type="checkbox" checked><span class="lever"></span></label>
-                                </div>
-                            </li>
-                        </ul>
-                        <p>ACCOUNT SETTINGS</p>
-                        <ul class="setting-list">
-                            <li>
-                                <span>Offline</span>
-                                <div class="switch">
-                                    <label><input type="checkbox"><span class="lever"></span></label>
-                                </div>
-                            </li>
-                            <li>
-                                <span>Location Permission</span>
-                                <div class="switch">
-                                    <label><input type="checkbox" checked><span class="lever"></span></label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </aside>
-        <!-- #END# Right Sidebar -->
     </section>
 
     <section class="content">
-            <!-- Body Copy -->
-             <?php
+             <!--Dead Animals Complaints -->
+             <div class="row clearfix">
+                <div class="col-xs-8 col-sm-8 col-md-6 col-lg-8">
+                    <div class="card">
+                        <div class="header bg-amber">
+                            <h2>DEAD ANIMALS COMPLAINTS</h2>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-hover dashboard-task-infos">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Address</th>
+                                            <th>Type</th>
+                                            <th>Description</th>
+                                            <th>Contact No.</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                            $server = "localhost";
+                                            $user = "root";
+                                            $pass = "";
+                                            $dbname = "user";
+                                            $conn = mysqli_connect($server,$user,$pass,$dbname);
+                                            $sql = "select * from complain where problem='Animal'";
+                                            $result = mysqli_query($conn,$sql);
 
-                $server = "localhost";
-                $user = "root";
-                $pass = "";
-                $dbname = "user";
-                $conn = mysqli_connect($server,$user,$pass,$dbname);
-                if(!$conn)
-                {
-                    echo "Not Connected";
-                }
-                else
-                {
-                    echo "Connected";
-                }
-                $sql = "select * from leakage";
-                $result = mysqli_query($conn,$sql);
 
-                echo "<table border='10'>
-
-                <tr>
-                <th>Complain ID</th>
-                <th>Ward Number</th>
-                <th>Description</th>
-                <th>Address</th>
-                </tr>";
-
-                while ($row=mysqli_fetch_array($result)) {
-                echo "<tr>";
-                echo "<td>".$row['complain_id'].".</td>";
-                echo "<td>".$row['Ward_no'].".</td>";
-                echo "<td>".$row['Address'].".</td>";
-                echo "<td>".$row['Complain_Info'].".</td>";
-                
-                }
-                echo "</table>";
-
-            ?>
-            
-                
-            
+                                            while ($row=mysqli_fetch_array($result)) {
+                                                echo "<tr>";
+                                                echo "<td>".$row['uniqueid']."</td>";
+                                                echo "<td>".$row['address']."</td>";
+                                                echo "<td>".$row['problem']."</td>";
+                                                echo "<td>".$row['complaininfo']."</td>";
+                                                echo "<td>".$row['mobileno']."</td>";
+                                                echo "</tr>";
+                                            }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!--#End# Leakage Complaints-->
     </section>
 
     <!-- Jquery Core Js -->

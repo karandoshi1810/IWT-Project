@@ -18,18 +18,20 @@ if(isset($_POST['login']))
 			{
 				if($row['email']==$email && $row['password'] == $pwd)
 				{
+					echo "Email:".$row['email']."<br>Password:".$row['password'];
+					echo "<br> Query successfull";
 					$namesurname = $row['name'];
 					
 					$_SESSION['email'] = $email;
 					$_SESSION['uname'] = $namesurname;
-					$_SESSION['admin'] = true;
-					header("Location:../../index.php");
+					$_SESION['admin'] = true;
+					header("Location:index.php");
 				
 				}
 				else
 				{
 					echo "<br> Query not successfull";
-					header("Location:sign-up.php","Please enter valid credentials!!");
+					header("Location:/Project/Templates/Admin/AdminBSBMaterialDesign-master/index.php","Please enter valid credentials!!");
 					//header("");
 				}
 			}

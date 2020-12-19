@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -23,43 +24,6 @@
 
     <!-- Custom Css -->
     <link href="../../css/style.css" rel="stylesheet">
-    <script type="text/javascript">
-        function validateForm()
-        {
-            var name = document.getElementById("name");
-            var email = document.getElementById("email");
-            var password = document.getElementById("pass");
-            var email_patt = /([A-Z a-z 0-9 _\ -\ .])+\@+([A-Z a-z .]) + ([a-z])$/i;
-            var pass_patt = /([A-Z a-z]{4})+([0-9 @\ _\ .]{4})$/i;
-
-
-            if(strlen(name)<2)
-            {
-                if(email_patt.test(email)==true)
-                {
-                    if(pass_patt.test(password)==true)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        password.innerHTML = "Password must contain first four characters as letters and last four characters as number and special characters like @ _ .";
-                        return false;
-                    }
-                }
-                else
-                {
-                    email.required.autofocus.innerHTML = "Please enter correct Email Id";
-                    return false;
-                }
-            }
-            else
-            {
-                name.required.autofocus.innerHTML = "Please enter your name and surname both";
-                return false;
-            }
-        }
-    </script>
 </head>
 
 <body class="signup-page">
@@ -69,7 +33,7 @@
         </div>
         <div class="card">
             <div class="body">
-                <form id="sign_up" method="post" action="registration.php">
+                <form id="sign_up" method="POST" onsubmit="return formValidation()">
                     <div class="msg">Register a new membership</div>
                     <div class="input-group">
                         <span class="input-group-addon">
@@ -84,7 +48,7 @@
                             <i class="material-icons">email</i>
                         </span>
                         <div class="form-line">
-                            <input type="email" class="form-control" name="email" placeholder="Email Address" id = "name" required>
+                            <input type="email" class="form-control" name="email" placeholder="Email Address" required>
                         </div>
                     </div>
                     <div class="input-group">
@@ -92,7 +56,7 @@
                             <i class="material-icons">lock</i>
                         </span>
                         <div class="form-line">
-                            <input type="password" class="form-control" name="password" minlength="6" placeholder="Password" id="password" required>
+                            <input type="password" class="form-control" name="password" minlength="6" placeholder="Password" required>
                         </div>
                     </div>
                     <div class="input-group">
@@ -108,10 +72,10 @@
                         <label for="terms">I read and agree to the <a href="javascript:void(0);">terms of usage</a>.</label>
                     </div>
 
-                    <input class="btn btn-block btn-lg bg-pink waves-effect" type="submit" value="SIGN UP" name = "register">
+                    <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit" >SIGN UP</button>
 
                     <div class="m-t-25 m-b--5 align-center">
-                        <a href="sign-in.php">You already have a membership?</a>
+                        <a href="sign-in.html">You already have a membership?</a>
                     </div>
                 </form>
             </div>
