@@ -9,6 +9,11 @@
     {
         $affected_ward = $_POST['ward'];
         $new_time = $_POST['datetime'];
+        $sql = "insert into timemanagement values('".$affected_ward."','".$new_time."')";
+        if(mysqli_query($conn,$sql))
+        {
+            echo '<script> alert("Updated timings to database successfully.") </script>';
+        }
         $to_email = "karan.doshi105417@marwadiuniversity.ac.in";
         if (mail('karan.doshi105417@marwadiuniversity.ac.in', 'New timings for water in your => '. $affected_ward, 'The updated timings for household water in your ward from tomorrow is=>'. $new_time, 'From: karan.doshi105417@marwadiuniversity.ac.in')) 
         {
@@ -113,7 +118,7 @@ img {
     <div class="overlay"></div>
     <!-- #END# Overlay For Sidebars -->
     <!-- Search Bar -->
-    <div class="search-bar">
+    <!--<div class="search-bar">
         <div class="search-icon">
             <i class="material-icons">search</i>
         </div>
@@ -121,7 +126,7 @@ img {
         <div class="close-search">
             <i class="material-icons">close</i>
         </div>
-    </div>
+    </div>-->
     <!-- #END# Search Bar -->
     <!-- Top Bar -->
     <nav class="navbar">
@@ -131,16 +136,16 @@ img {
                 <a href="javascript:void(0);" class="bars"></a>
                 <a class="navbar-brand" href="../index.php">Cleanliness and Water Management</a>
             </div>
-            <div class="collapse navbar-collapse" id="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
+            <!--<div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">-->
                     <!-- Call Search -->
-                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
+                    <!--<li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>-->
                     <!-- #END# Call Search -->
                     
                     
-                    <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>
+                    <!--<li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>
                 </ul>
-            </div>
+            </div>-->
         </div>
     </nav>
     <!-- #Top Bar -->
@@ -150,10 +155,10 @@ img {
             <!-- User Info -->
             <div class="user-info">
                 <div class="image">
-                <img src="/Project/Templates/Admin/AdminBSBMaterialDesign-master/me-removebg.png" width="48" height="48" onerror="this.onerror=null;D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/images/user.png;" alt="Image not found" />
+                <img src="images/user.png" width="60" height="60" onerror="this.onerror=null;D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/images/user.png;" alt="Image not found" />
                     
                     
-                </div>
+
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php
@@ -177,6 +182,13 @@ img {
                             ?>
 
                     </div>
+                    <div class="btn-group user-helper-dropdown">
+                            <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                            <ul class="dropdown-menu pull-right">
+                                <li><a href="sign-out.php"><i class="material-icons">exit_to_app</i>Sign Out</a></li>
+                            </ul>
+                        </div>
+</div>
                     
                 </div>
             </div>
@@ -193,19 +205,19 @@ img {
                     </li>
                     <li>
                         <a href="pages/typography.php">
-                            <i class="material-icons">text_fields</i>
+                            <i class="material-icons">track_changes</i>
                             <span>Complain Tracking</span>
                         </a>
                     </li>
                     <li class="active">
                         <a href="TimeManagement.php">
-                            <i class="material-icons">layers</i>
+                            <i class="material-icons">watch_later</i>
                             <span>Time Management</span>
                         </a>
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">widgets</i>
+                            <i class="material-icons">local_shipping</i>
                             <span>Recycling</span>
                         </a>
                         <ul class="ml-menu">
@@ -228,7 +240,7 @@ img {
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">assignment</i>
+                            <i class="material-icons">delete</i>
                             <span>IoT Dustbin</span>
                         </a>
                          <ul class="ml-menu">
@@ -256,10 +268,10 @@ img {
     <section class="content">
         <div class="container-fluid">
             <div class="card">
-                <div class="header">
+                <div class="header bg-amber">
                     <h2 align="center">
                         WATER TIMINGS MANAGEMENT
-                    </h2><br><br>
+                    </h2>
                 </div>
                 <div class="container">
                         <form style="margin-left: 100px; left: 700px;"  method = "POST">

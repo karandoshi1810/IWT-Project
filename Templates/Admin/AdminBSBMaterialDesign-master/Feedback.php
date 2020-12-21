@@ -69,17 +69,6 @@
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
     <!-- #END# Overlay For Sidebars -->
-    <!-- Search Bar -->
-    <div class="search-bar">
-        <div class="search-icon">
-            <i class="material-icons">search</i>
-        </div>
-        <input type="text" placeholder="TYPE TO SEARCH...">
-        <div class="close-search">
-            <i class="material-icons">close</i>
-        </div>
-    </div>
-    <!-- #END# Search Bar -->
     <!-- Top Bar -->
     <nav class="navbar">
         <div class="container-fluid">
@@ -87,16 +76,6 @@
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
                 <a class="navbar-brand" href="../index.php">Cleanliness and Water Management</a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Call Search -->
-                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
-                    <!-- #END# Call Search -->
-                    
-                    
-                    <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>
-                </ul>
             </div>
         </div>
     </nav>
@@ -107,8 +86,8 @@
             <!-- User Info -->
             <div class="user-info" style="background-color: #FA8821">
                 <div class="image">
-                    <img src="/Project/Templates/Admin/AdminBSBMaterialDesign-master/me-removebg.png" width="48" height="48" onerror="this.onerror=null;D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/images/user.png;" alt="Image not found" />   
-                </div>
+                    <img src="images/user.png" width="60" height="60" onerror="this.onerror=null;D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/images/user.png;" alt="Image not found" />   
+
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php
@@ -130,9 +109,14 @@
                             echo $_SESSION["email"];
                             
                             ?>
-
                     </div>
-                    
+                    <div class="btn-group user-helper-dropdown">
+                            <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                            <ul class="dropdown-menu pull-right">
+                                <li><a href="../sign-out.php"><i class="material-icons">exit_to_app</i>Sign Out</a></li>
+                            </ul>
+                        </div>
+</div>
                 </div>
             </div>
             <!-- #User Info -->
@@ -231,9 +215,9 @@
                                 <table class="table table-bordered table-striped table-hover js-exportable">
                                     <thead>
                                         <tr>
-                                            <th>USER-ID</th>
-                                            <th>ADDRESS</th>
-                                            <th>FEEDBACK</th>
+                                            <th>Feedback-ID</th>
+                                            <th>Address</th>
+                                            <th>Feedback</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -249,7 +233,7 @@
 
                                             while ($row=mysqli_fetch_array($result)) {
                                                 echo "<tr>";
-                                                echo "<td>".$row['uniqueid']."</td>";
+                                                echo "<td>".$row['feedbackid']."</td>";
                                                 echo "<td>".$row['address']."</td>";
                                                 echo "<td>".$row['typefeedback']."</td>";
                                                 echo "</tr>";

@@ -25,4 +25,21 @@
         }            
 
     }
+
+
+    if(isset($_POST['deleteTask']))
+    {
+        $taskID = $_POST['task_delete'];
+        $sql = "delete from task where task_number='$taskID'";
+        if(mysqli_query($conn,$sql))
+        {
+            echo "record saved";
+            header("Location:index.php");
+        }
+        else
+        {
+            echo "Record not saved".mysqli_error($conn);
+        }            
+
+    }
 ?>

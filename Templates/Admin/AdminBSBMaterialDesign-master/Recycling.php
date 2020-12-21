@@ -1,12 +1,36 @@
 <?php
-session_start();
-include "Connection.php";
-if(!isset($_SESSION['admin'])){
-    header("location:pages/examples/sign-in.php");
-    die();
- }
-?>
+    session_start();
+    include "Connection.php";
+    /*if(!isset($_SESSION['admin'])){
+        header("location:pages/examples/sign-in.php");
+        die();
+     }*/
+    if(isset($_POST['update']))
+    {
+        $server = "localhost";
+        $user = "root";
+        $pwd = "";
+        $dbname = "admin";
+        $conn = mysqli_connect($server,$user,$pwd,$dbname);
+        
+        $address = $_POST['address'];
+        $weight = $_POST['weight'];
+        $ground = $_POST['ground'];
+        $sql = "insert into recycling values('".$address."','".$weight."','".$ground."')";
+        if(mysqli_query($conn,$sql))
+        {
+            echo '<script>alert("Updated Successfully")</script>';
+            header("Location:Recycling.php");
+        }
+        else
+        {
+            header("Location:index.php");
+            echo '<script>alert("Cannot Updated Successfully")</script>';
+        }
 
+    }
+    
+?>
 <!DOCTYPE html>
 <html>
 
@@ -14,7 +38,7 @@ if(!isset($_SESSION['admin'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Recycling</title>
+    <title>Recycling Waste Information</title>
     <!-- Favicon-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -23,13 +47,19 @@ if(!isset($_SESSION['admin'])){
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap Core Css -->
-    <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet"/>
 
     <!-- Waves Effect Css -->
     <link href="plugins/node-waves/waves.css" rel="stylesheet" />
 
     <!-- Animation Css -->
     <link href="plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- Bootstrap Material Datetime Picker Css -->
+    <link href="/Project/Templates/Admin/AdminBSBMaterialDesign-master/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+
+    <!-- Bootstrap DatePicker Css -->
+    <link href="/plugins/bootstrap-material-datetimepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
 
     <!-- Morris Chart Css-->
     <link href="plugins/morrisjs/morris.css" rel="stylesheet" />
@@ -40,8 +70,6 @@ if(!isset($_SESSION['admin'])){
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="css/themes/all-themes.css" rel="stylesheet" />
 
-    <!-- Bootstrap Select Css -->
-    <link href="../../plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />                
 
     <style>
   .card {
@@ -68,7 +96,6 @@ img {
   position: relative;
   width: 100%;
   height: 100%;
-  top: 130px;
 }
 </style>
 </head>
@@ -94,17 +121,6 @@ img {
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
     <!-- #END# Overlay For Sidebars -->
-    <!-- Search Bar -->
-    <div class="search-bar">
-        <div class="search-icon">
-            <i class="material-icons">search</i>
-        </div>
-        <input type="text" placeholder="START TYPING...">
-        <div class="close-search">
-            <i class="material-icons">close</i>
-        </div>
-    </div>
-    <!-- #END# Search Bar -->
     <!-- Top Bar -->
     <nav class="navbar">
         <div class="container-fluid">
@@ -113,29 +129,20 @@ img {
                 <a href="javascript:void(0);" class="bars"></a>
                 <a class="navbar-brand" href="../index.php">Cleanliness and Water Management</a>
             </div>
-            <div class="collapse navbar-collapse" id="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Call Search -->
-                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
-                    <!-- #END# Call Search -->
-                    
-                    
-                    <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>
-                </ul>
-            </div>
         </div>
     </nav>
     <!-- #Top Bar -->
     <section>
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
-           <!-- User Info -->
-           <div class="user-info">
+            <!-- User Info -->
+            <div class="user-info">
                 <div class="image">
-                <img src="/Project/Templates/Admin/AdminBSBMaterialDesign-master/me-removebg.png" width="48" height="48" onerror="this.onerror=null;D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/images/user.png;" alt="Image not found" />
-                    
-                    
+                <img src="images/user.png" width="60" height="60" onerror="this.onerror=null;D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/images/user.png;" alt="Image not found" />
                 </div>
+                    
+                    
+
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php
@@ -159,6 +166,13 @@ img {
                             ?>
 
                     </div>
+                    <div class="btn-group user-helper-dropdown">
+                            <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                            <ul class="dropdown-menu pull-right">
+                                <li><a href="sign-out.php"><i class="material-icons">exit_to_app</i>Sign Out</a></li>
+                            </ul>
+                        </div>
+</div>
                     
                 </div>
             </div>
@@ -166,7 +180,7 @@ img {
             <!-- Menu -->
             <div class="menu">
                 <ul class="list">
-
+                    
                     <li>
                         <a href="index.php">
                             <i class="material-icons">home</i>
@@ -175,23 +189,23 @@ img {
                     </li>
                     <li>
                         <a href="pages/typography.php">
-                            <i class="material-icons">text_fields</i>
+                            <i class="material-icons">track_changes</i>
                             <span>Complain Tracking</span>
                         </a>
                     </li>
                     <li>
                         <a href="TimeManagement.php">
-                            <i class="material-icons">layers</i>
+                            <i class="material-icons">watch_later</i>
                             <span>Time Management</span>
                         </a>
                     </li>
-                    <li class = "active">
+                    <li class="active">
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">widgets</i>
+                            <i class="material-icons">local_shipping</i>
                             <span>Recycling</span>
                         </a>
                         <ul class="ml-menu">
-                            <li>
+                            <li >
                                 <a href="Recycling.php">
                                     <span>Info</span>
                                 </a>
@@ -210,7 +224,7 @@ img {
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">assignment</i>
+                            <i class="material-icons">delete</i>
                             <span>IoT Dustbin</span>
                         </a>
                          <ul class="ml-menu">
@@ -228,66 +242,120 @@ img {
                     </li>
                 </ul>
             </div>
-
-
-
-
             <!-- #Menu -->
+
         </aside>
-    </section>
         <!-- #END# Left Sidebar -->
+        
     </section>
 
     <section class="content">
         <div class="container-fluid">
-              <div class="card">
-              <div class="header">
+            <div class="card">
+                <div class="header bg-amber">
                     <h2 align="center">
-                       RECYCLING WASTE MANAGEMENT
-                    </h2><br><br>
+                        RECYCLING WASTE MANAGEMENT
+                    </h2>
                 </div>
-        <div class="container">
-            <br><br>
-          
-          <div class="col-sm-3">
-                <div class="form-group">
-                    <div class="form-line">
-                    <label>Waste Collection Area:</label><input type="text" name="area" id="area" class="form-control" placeholder="Collection Area">
-                    </div>
-                </div>
+                    <div class="container">
+
+                    <form class="form-horizontal" method = "POST">
+                                            <div class="form-group">
+                                                <label for="address" class="col-sm-2 control-label">Dustbin Address</label>
+                                                <div class="col-sm-10">
+                                                    <div class="form-line">
+                                                        <input type="text" class="form-control" id="address" name="address" placeholder="Dustbin Address" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="weight" class="col-sm-2 control-label">Weight of Waste</label>
+                                                <div class="col-sm-10">
+                                                    <div class="form-line">
+                                                    <input type="text" class="form-control" id="weight" name="weight" placeholder="Weight of waste(in tonnes)" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="group" class="col-sm-2 control-label">Dumping Ground</label>
+                                                <div class="col-sm-3">
+                                                    <div class="form-line">
+                                                        <select class="form-control show-tick" name="ground" id="ground">
+                                                            <option value="">-- Please select --</option>
+                                                            <option value="G1">Ground-1</option>
+                                                            <option value="G2">Ground-2</option>
+                                                            <option value="G3">Ground-3</option>
+                                                            <option value="G4">Ground-4</option>
+                                                            <option value="G5">Ground-5</option>
+                                                        </select> 
+                                                    </div>
+                                                </div>
+                                            </div><br><br><br>
+
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-5 col-sm-10">
+                                                    <button type="submit" class="btn btn-success" name="update">UPDATE DATA</button>
+                                                </div>
+                                            </div>
+                    </form>
+                        <!--<form method = "POST">
+
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <label>Name of citizen:</label><input type="text" name="citizenName" id="citizenName" class="form-control" placeholder="Name of citizen who requested to collect waste">
+                                </div>
+                            </div>
+
+                                <div class="col-sm-5">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <label>Contact Number:</label><input type="text" name="contactNo" id="contactNo" class="form-control" placeholder="Contact Number">
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="col-sm-5">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <label>Address of citizen:</label><input type="text" name="address" id="address" class="form-control" placeholder="Collection Area">
+                                        </div>
+                                    </div>
+                                </div>
+                                <br><br>
+                                <div class="col-sm-5">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <label>Waste Weight:</label><input type="text" name="weight" id="weight" class="form-control" placeholder="Weight of waste">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-5">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <label>Ground</label><br><br>
+                                                <select class="form-control show-tick" name="ground" id="ground">
+                                                    <option value="">-- Please select --</option>
+                                                    <option value="G1">Ground-1</option>
+                                                    <option value="G2">Ground-2</option>
+                                                    <option value="G3">Ground-3</option>
+                                                    <option value="G4">Ground-4</option>
+                                                    <option value="G5">Ground-5</option>
+                                                </select>       
+                                        </div>                     
+                                    </div>
+                                </div>
+
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="submit" name="update" id="update" value="UPDATE" class="btn bg-green waves-effect"/>
+                                        </div>                     
+                                    </div>
+
+                        </form>-->
+                    </div><br><br>
             </div>
-
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <div class="form-line">
-                    <label>Waste Weight:</label><input type="text" name="weight" id="weight" class="form-control" placeholder="Weight of waste">
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <div class="form-line">
-                        <label>Ground</label><br><br>
-                            
-                                <select class="form-control show-tick" name="ground" id="ground">
-                                    <option value="">-- Please select --</option>
-                                    <option value="G1">Ground-1</option>
-                                    <option value="G2">Ground-2</option>
-                                    <option value="G3">Ground-3</option>
-                                    <option value="G4">Ground-4</option>
-                                    <option value="G5">Ground-5</option>
-                                </select>       
-                    </div>                     
-                </div>
-            </div><br><br>
-          <!--<input type="button" name="tender" id="t&d" value="Tender" class="btn bg-green waves-effect" style="margin-right: 40px; position: relative;left: 400px;" onclick="window.location.href='E:/KARAN-ICT/SEMESTER-5/IWT/Project/Templates/Admin/AdminBSBMaterialDesign-master/pages/examples/sign-up.html';">-->
-          <input type="submit" name="update" id="update" value="UPDATE" class="btn bg-green waves-effect" style=";position: relative;left:400px;" onclick="window.location.href='History_Recycling.php';">
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         </div>
-    </div>
-        </div>  
     </section>
 
     <!-- Jquery Core Js -->
@@ -304,6 +372,18 @@ img {
 
     <!-- Waves Effect Plugin Js -->
     <script src="plugins/node-waves/waves.js"></script>
+
+    <!-- Autosize Plugin Js -->
+    <script src="plugins/autosize/autosize.js"></script>
+
+    <!-- Moment Plugin Js -->
+    <script src="plugins/momentjs/moment.js"></script>
+
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+    <script src="plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+
+    <!-- Bootstrap Datepicker Plugin Js -->
+    <script src="plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 
     <!-- Jquery CountTo Plugin Js -->
     <script src="plugins/jquery-countto/jquery.countTo.js"></script>
@@ -331,6 +411,9 @@ img {
 
     <!-- Demo Js -->
     <script src="js/demo.js"></script>
+
+    
 </body>
 
 </html>
+

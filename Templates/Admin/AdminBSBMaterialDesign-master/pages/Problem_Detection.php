@@ -44,7 +44,7 @@
 		else if($problem=="Animals Problem")
 		{
 			$sql = "select Animals from complain";
-			header("Location:Project/Templates/Admin/AdminBSBMaterialDesign-master/pages/Animals.php");
+			header("Location:/Project/Templates/Admin/AdminBSBMaterialDesign-master/pages/Animals.php");
 		}
 		else if($problem=="Other Problems")
 		{

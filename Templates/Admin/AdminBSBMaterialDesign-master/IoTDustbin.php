@@ -129,7 +129,7 @@ img {
                 <img src="/Project/Templates/Admin/AdminBSBMaterialDesign-master/me-removebg.png" width="48" height="48" onerror="this.onerror=null;D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/images/user.png;" alt="Image not found" />
                     
                     
-                </div>
+
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php
@@ -153,6 +153,13 @@ img {
                             ?>
 
                     </div>
+                    <div class="btn-group user-helper-dropdown">
+                            <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                            <ul class="dropdown-menu pull-right">
+                                <li><a href="sign-out.php"><i class="material-icons">exit_to_app</i>Sign Out</a></li>
+                            </ul>
+                        </div>
+</div>
                     
                 </div>
             </div>
@@ -168,19 +175,19 @@ img {
                     </li>
                     <li>
                         <a href="pages/typography.php">
-                            <i class="material-icons">text_fields</i>
+                            <i class="material-icons">track_changes</i>
                             <span>Complain Tracking</span>
                         </a>
                     </li>
                     <li>
                         <a href="TimeManagement.php">
-                            <i class="material-icons">layers</i>
+                            <i class="material-icons">watch_later</i>
                             <span>Time Management</span>
                         </a>
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">widgets</i>
+                            <i class="material-icons">local_shipping</i>
                             <span>Recycling</span>
                         </a>
                         <ul class="ml-menu">
@@ -203,7 +210,7 @@ img {
                     </li>
                     <li class = "active">
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">assignment</i>
+                            <i class="material-icons">delete</i>
                             <span>IoT Dustbin</span>
                         </a>
                          <ul class="ml-menu">

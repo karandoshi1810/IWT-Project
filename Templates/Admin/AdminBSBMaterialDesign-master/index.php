@@ -68,17 +68,6 @@
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
     <!-- #END# Overlay For Sidebars -->
-    <!-- Search Bar -->
-    <div class="search-bar">
-        <div class="search-icon">
-            <i class="material-icons">search</i>
-        </div>
-        <input type="text" placeholder="TYPE TO SEARCH...">
-        <div class="close-search">
-            <i class="material-icons">close</i>
-        </div>
-    </div>
-    <!-- #END# Search Bar -->
     <!-- Top Bar -->
     <nav class="navbar">
         <div class="container-fluid">
@@ -86,16 +75,6 @@
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
                 <a class="navbar-brand" href="../index.php">Cleanliness and Water Management</a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Call Search -->
-                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
-                    <!-- #END# Call Search -->
-                    
-                    
-                    <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>
-                </ul>
             </div>
         </div>
     </nav>
@@ -105,34 +84,41 @@
         <aside id="leftsidebar" class="sidebar">
             <!-- User Info -->
             <div class="user-info" style="background-color: #FA8821">
+            
                 <div class="image">
-                    <img src="/Project/Templates/Admin/AdminBSBMaterialDesign-master/me-removebg.png" width="48" height="48" onerror="this.onerror=null;D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/images/user.png;" alt="Image not found" />   
-                </div>
-                <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?php
-                            include 'Connection.php';
-                            //$email = $_POST['email'];
-                            //$password = $_POST['password'];
-                            //$name = $_POST['uname'];
-                            echo $_SESSION["uname"];
-                            echo "<br>";
-                            ?>
-                    </div>
-                    <div class="email">
+                    <img src="images/user.png" width="60" height="60" onerror="this.onerror=null;D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/images/user.png;" alt="Image not found" />   
+                
+                    <div class="info-container">
+                        <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <?php
-                            include 'Connection.php';
-                            //$email = $_POST['email'];
-                            //$password = $_POST['password'];
-                            //$name = $_POST['uname'];
-                            
-                            echo $_SESSION["email"];
-                            
-                            ?>
-
+                                include 'Connection.php';
+                                //$email = $_POST['email'];
+                                //$password = $_POST['password'];
+                                //$name = $_POST['uname'];
+                                echo $_SESSION["uname"];
+                                echo "<br>";
+                                ?>
+                        </div>
+                        <div class="email">
+                                <?php
+                                include 'Connection.php';
+                                //$email = $_POST['email'];
+                                //$password = $_POST['password'];
+                                //$name = $_POST['uname'];
+                                
+                                echo $_SESSION["email"];
+                                ?>
+                        </div>
+                        <div class="btn-group user-helper-dropdown">
+                            <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                            <ul class="dropdown-menu pull-right">
+                                <li><a href="sign-out.php"><i class="material-icons">exit_to_app</i>Sign Out</a></li>
+                            </ul>
+                        </div>
+                        
                     </div>
-                    
                 </div>
+                
             </div>
             <!-- #User Info -->
             <!-- Menu -->
@@ -147,19 +133,19 @@
                     </li>
                     <li>
                         <a href="pages/typography.php">
-                            <i class="material-icons">text_fields</i>
+                            <i class="material-icons">track_changes</i>
                             <span>Complain Tracking</span>
                         </a>
                     </li>
                     <li>
                         <a href="TimeManagement.php">
-                            <i class="material-icons">layers</i>
+                            <i class="material-icons">watch_later</i>
                             <span>Time Management</span>
                         </a>
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">widgets</i>
+                            <i class="material-icons">local_shipping</i>
                             <span>Recycling</span>
                         </a>
                         <ul class="ml-menu">
@@ -182,7 +168,7 @@
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">assignment</i>
+                            <i class="material-icons">delete</i>
                             <span>IoT Dustbin</span>
                         </a>
                          <ul class="ml-menu">
@@ -238,11 +224,11 @@
                                 $pass = "";
                                 $dbname = "user";
                                 $conn = mysqli_connect($server,$user,$pass,$dbname);
-                                $sql = "select count(uniqueid) from complain";
+                                $sql = "select * from complain";
                                 $result=mysqli_query($conn,$sql);
-                                $row = mysqli_fetch_array($result);
+                                $records=mysqli_num_rows($result);
                             ?>
-                            <div class="number count-to" data-from="0" data-to="<?php echo count($row)+1 ?>" data-speed="15" data-fresh-interval="20"></div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo $records; ?>" data-speed="15" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </div>
@@ -252,19 +238,18 @@
                             <i class="material-icons">help</i>
                         </div>
                         <div class="content">
-                            <div class="text">NEW VISITORS</div>
+                            <div class="text">TOTAL ADMINS</div>
                             <?php
                                 $server = "localhost";
                                 $user = "root";
                                 $pass = "";
                                 $dbname = "user";
                                 $conn = mysqli_connect($server,$user,$pass,$dbname);
-                                $sql = "select count(*) from signup";
+                                $sql = "select * from signup";
                                 $result=mysqli_query($conn,$sql);
-                                $mobileno = mysqli_fetch_array($result);
-                                echo '<script>alert($mobileno)</script>'
+                                $records_visitors=mysqli_num_rows($result);
                             ?>
-                            <div class="number count-to" data-from="0" data-to="<?php echo count($mobileno)+1 ?>" data-speed="1000" data-fresh-interval="20"></div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo $records_visitors ?>" data-speed="1000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </div>
@@ -281,11 +266,11 @@
                                 $pass = "";
                                 $dbname = "user";
                                 $conn = mysqli_connect($server,$user,$pass,$dbname);
-                                $sql = "select count(uniqueid) from feedback";
+                                $sql = "select * from feedback";
                                 $result_feedback=mysqli_query($conn,$sql);
-                                $feedback = mysqli_fetch_array($result_feedback);
+                                $records_feeedback = mysqli_num_rows($result_feedback);
                             ?>
-                            <div class="number count-to" data-from="0" data-to="<?php echo count($feedback)+1 ?>" data-speed="1000" data-fresh-interval="20"></div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo $records_feeedback ?>" data-speed="1000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </div>
@@ -302,20 +287,20 @@
                                 $pass = "";
                                 $dbname = "user";
                                 $conn = mysqli_connect($server,$user,$pass,$dbname);
-                                $sql = "select count(uniqueid) from complain";
-                                $result=mysqli_query($conn,$sql);
-                                $row = mysqli_fetch_array($result);
+                                $sql = "select * from complain";
+                                $result_pending_complaints=mysqli_query($conn,$sql);
+                                $records_pending_complaints = mysqli_num_rows($result_pending_complaints);
                             ?>
-                            <div class="number count-to" data-from="0" data-to="<?php echo count($row)+1 ?>" data-speed="1000" data-fresh-interval="20"></div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo $records_pending_complaints ?>" data-speed="1000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- #END# Widgets -->
            
-            <div class="row clearfix">
+            <!--<div class="row clearfix">-->
                 <!-- Answered Tickets -->
-                <div class="col-xs-8 col-sm-8 col-md-6 col-lg-6">
+                <!--<div class="col-xs-8 col-sm-8 col-md-6 col-lg-6">
                     <div class="card">
                         <div class="body bg-teal">
                             <div class="font-bold m-b--35">ANSWERED TICKETS</div>
@@ -347,41 +332,15 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div>-->
                 <!-- #END# Answered Tickets -->
 
-
-                <!-- Information(Paragraph) -->
-                <div class="col-xs-8 col-sm-8 col-md-6 col-lg-6">
-                    <div class="card">
-                        <div class="body bg-blue">
-                            <div class="font-bold m-b--35">Information</div>
-                        </div>
-                        <p>Water and Cleanliness Management Portal shows you changes in time doen by Municipal Corporation.</p>
-                    </div>
-                </div>
-                <!-- #END# Information(Paragraph) -->
-
-            </div>
-
-            <div class="row clearfix">
+                <div class="row clearfix">
                 <!-- Task Info -->
                 <div class="col-xs-8 col-sm-8 col-md-6 col-lg-5.5">
                     <div class="card">
                         <div class="header bg-amber">
-                            <h2>TASK INFOS</h2>
-                            <ul class="header-dropdown m-r--5">
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
+                            <h2 font-bold m-b--35>Task Info</h2>
                         </div>
                         <div class="body">
                             <div class="table-responsive">
@@ -423,7 +382,7 @@
                                         </div>
                                         <div class="col-xs-3 col-sm-2 col-md-3 col-lg-3" style="padding-left:140px;">
                                             <!--<button type="submit" class="btn bg-blue waves-effect" onsubmit="window.location.href='Add_Task.php';" name="addTask"> <i class="material-icons" >add</i> <span class="icon-name">Task</span> </button>-->
-                                            <button type="button" class="btn btn-default waves-effect m-r-20" data-toggle="modal" data-target="#smallModal" ><i class="material-icons" >remove_circle_outline</i> <span class="icon-name">DELETE TASK</button>    
+                                            <button type="button" class="btn btn-default waves-effect m-r-20" data-toggle="modal" data-target="#smallModal1" ><i class="material-icons" >remove_circle_outline</i> <span class="icon-name">DELETE TASK</button>    
                                             
                                         </div>
                                         
@@ -434,6 +393,27 @@
                     </div>
                 </div>
                 <!-- #END# Task Info -->
+
+                <!-- Information(Paragraph) -->
+                <div class="col-xs-8 col-sm-8 col-md-6 col-lg-6">
+                    <div class="card">
+                    <div class="header bg-blue">
+                            <h2 font-bold m-b--35>Information</h2>
+                    </div>
+                        <p>Cleanliness adds more value to personal and social life. Since good habits are contagious, it is possible to teach 
+                           children, neighbours and illiterates on the importance of cleanliness, by being a role model. With a collective effort,
+                           cleanliness and in turn, good health and happiness are within reach. Water is essential to life for all living organisms 
+                           on Earth.  Because of absence of water on other planets life is absent over there.  We are so fortunate to have so many water bodies 
+                           on our mother planet.</p>
+
+                        <p>    Pure and clean water is equal to the divine magic potion “amrutham”, as it makes us live long and healthy.  
+                        So pure water is elixir of life.</p>
+                    </div>
+                </div>
+                <!-- #END# Information(Paragraph) -->
+
+            </div>
+
                 <!-- Browser Usage -->
                 <div class="col-xs-8 col-sm-6 col-md-6 col-lg-8">
                     <div class="card">
@@ -458,7 +438,7 @@
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="smallModalLabel">Modal title</h4>
+                            <h4 class="modal-title" id="smallModalLabel">Add Task</h4>
                         </div>
                         <form action="updateTask.php" method = "POST">
                             <div class="col-sm-3">
@@ -505,6 +485,33 @@
                             </div>
                             <div class="modal-footer">
                                 <input type="submit" class="btn btn-link waves-effect" name="addTask" value="SAVE CHANGES">
+                                <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                            </div>
+
+                        </form><br><br>
+                       
+                    </div>
+                </div>
+        </div>
+
+
+        <div class="modal fade" id="smallModal1" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="smallModalLabel">Delete Task</h4>
+                        </div>
+                        <form action="updateTask.php" method = "POST">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <label>Task ID:</label><input type="text" name="task_delete" id="task_delete" class="form-control" placeholder="Task ID">
+                                        
+                                    </div>
+                                </div>
+                            </div><br>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-link waves-effect" name="deleteTask" value="DELETE TASK">
                                 <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
                             </div>
 

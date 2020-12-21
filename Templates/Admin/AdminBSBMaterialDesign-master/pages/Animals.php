@@ -3,8 +3,39 @@
     session_start();
     include "Connection.php";
     if(!isset($_SESSION['admin'])){
-        header("location:sign-in.php");
+        header("location:examples/sign-in.php");
         die();
+     }
+     if(isset($_POST['received_animals_complain']))
+     {
+         $complainID=$_SESSION["complainID"];
+         $email_user = $_SESSION["email_user"];
+         if(mail($email_user,'Update regarding your complaint '.$complainID,'Respected citizen,
+         We are sorry for the inconvinency. We have received your complain and we will make our best and swift efforts to take care of pick up and cleaning of dead animals in your area.
+         Regards and Thank you.'))
+         {
+             echo "<script>alert('Complain status has been updated')</script>";
+         }
+         else
+         {
+             echo "<script>alert('Complain status cannot be updated')</script>";
+         }
+     }
+ 
+     if(isset($_POST['resolved_animals_complain']))
+     {
+         $complainID=$_SESSION["complainID"];
+         $email_user = $_SESSION["email_user"];
+         if(mail($email_user,'Update regarding your complaint '.$complainID,'Respected citizen,
+          Your complain for dead animal/s has been resolved. Please contact us if you face any inconviniency.
+         Regards and Thank you.'))
+         {
+             echo "<script>alert('Complain status has been updated')</script>";
+         }
+         else
+         {
+             echo "<script>alert('Complain status cannot be updated')</script>";
+         }
      }
 ?>
 <!DOCTYPE html>
@@ -62,17 +93,6 @@
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
     <!-- #END# Overlay For Sidebars -->
-    <!-- Search Bar -->
-    <div class="search-bar">
-        <div class="search-icon">
-            <i class="material-icons">search</i>
-        </div>
-        <input type="text" placeholder="START TYPING...">
-        <div class="close-search">
-            <i class="material-icons">close</i>
-        </div>
-    </div>
-    <!-- #END# Search Bar -->
     <!-- Top Bar -->
     <nav class="navbar">
         <div class="container-fluid">
@@ -80,16 +100,6 @@
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
                 <a class="navbar-brand" href="../index.php">Cleanliness and Water Management</a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Call Search -->
-                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
-                    <!-- #END# Call Search -->
-                    
-                    
-                    <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>
-                </ul>
             </div>
         </div>
     </nav>
@@ -100,10 +110,10 @@
             <!-- User Info -->
             <div class="user-info">
                 <div class="image">
-                <img src="/Project/Templates/Admin/AdminBSBMaterialDesign-master/me-removebg.png" width="48" height="48" onerror="this.onerror=null;D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/images/user.png;" alt="Image not found" />
+                <img src="../images/user.png" width="60" height="60" onerror="this.onerror=null;D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/images/user.png;" alt="Image not found" />
                     
                     
-                </div>
+
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php
@@ -126,8 +136,14 @@
                             echo $_SESSION["email"];
                             
                             ?>
-
                     </div>
+                    <div class="btn-group user-helper-dropdown">
+                            <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                            <ul class="dropdown-menu pull-right">
+                                <li><a href="../sign-out.php"><i class="material-icons">exit_to_app</i>Sign Out</a></li>
+                            </ul>
+                        </div>
+</div>
                     
                 </div>
             </div>
@@ -208,21 +224,21 @@
     <section class="content">
              <!--Dead Animals Complaints -->
              <div class="row clearfix">
-                <div class="col-xs-8 col-sm-8 col-md-6 col-lg-8">
+                <div class="col-xs-8 col-sm-8 col-md-6 col-lg-12">
                     <div class="card">
                         <div class="header bg-amber">
                             <h2>DEAD ANIMALS COMPLAINTS</h2>
                         </div>
                         <div class="body">
                             <div class="table-responsive">
-                                <table class="table table-hover dashboard-task-infos">
+                                <table class="table table-bordered table-striped table-hover dashboard-task-infos dataTable js-basic-example">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
                                             <th>Address</th>
                                             <th>Type</th>
                                             <th>Description</th>
-                                            <th>Contact No.</th>
+                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -237,13 +253,20 @@
 
 
                                             while ($row=mysqli_fetch_array($result)) {
+                                                $id = $row['complainid'];
+                                                $_SESSION['complainID'] = $id;
+                                                $email_user = $row['email'];
+                                                $_SESSION['email_user'] = $email_user;
+                                                echo '<form method="POST">';
                                                 echo "<tr>";
-                                                echo "<td>".$row['uniqueid']."</td>";
+                                                echo "<td>".$row['complainid']."</td>";
                                                 echo "<td>".$row['address']."</td>";
                                                 echo "<td>".$row['problem']."</td>";
                                                 echo "<td>".$row['complaininfo']."</td>";
-                                                echo "<td>".$row['mobileno']."</td>";
+                                                echo "<td>".'<input type="submit" name="received_animals_complain" value="RECEIVED" class="btn bg-blue waves-effect waves-light">'."</td>";
+                                                echo "<td>".'<input type="submit" name="resolved_animals_complain" value="RESOLVED" class="btn bg-cyan waves-effect waves-light">'."</td>";
                                                 echo "</tr>";
+                                                echo '</form>';
                                             }
                                         ?>
                                     </tbody>

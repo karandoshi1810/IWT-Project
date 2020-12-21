@@ -5,6 +5,21 @@
         header("location:pages/examples/sign-in.php");
         die();
      }
+     if(isset($_POST['grant_voucher']))
+     {
+         $recyclingID=$_SESSION["recyclingID"];
+         $email_user = $_SESSION["email_user"];
+         if(mail($email_user,'Update regarding your complaint '.$recyclingID,'Respected citizen,
+         You have collected dry waste. You have been awarded a bus ticket from rajkot to junagadh. Just show this mail and you will recieve the reward.
+         Regards and Thank you.'))
+         {
+             echo "<script>alert('Complain status has been updated')</script>";
+         }
+         else
+         {
+             echo "<script>alert('Complain status cannot be updated')</script>";
+         }
+     }
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +29,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>History</title>
+    <title>Recycling History</title>
     <!-- Favicon-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -148,17 +163,7 @@ th,td{
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
     <!-- #END# Overlay For Sidebars -->
-    <!-- Search Bar -->
-    <div class="search-bar">
-        <div class="search-icon">
-            <i class="material-icons">search</i>
-        </div>
-        <input type="text" placeholder="START TYPING...">
-        <div class="close-search">
-            <i class="material-icons">close</i>
-        </div>
-    </div>
-    <!-- #END# Search Bar -->
+
     <!-- Top Bar -->
     <nav class="navbar">
         <div class="container-fluid">
@@ -166,16 +171,6 @@ th,td{
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
                 <a class="navbar-brand" href="../index.php">Cleanliness and Water Management</a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Call Search -->
-                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
-                    <!-- #END# Call Search -->
-                    
-                    
-                    <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>
-                </ul>
             </div>
         </div>
     </nav>
@@ -186,7 +181,7 @@ th,td{
             <!-- User Info -->
             <div class="user-info">
                 <div class="image">
-                <img src="/Project/Templates/Admin/AdminBSBMaterialDesign-master/me-removebg.png" width="48" height="48" onerror="this.onerror=null;D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/images/user.png;" alt="Image not found" />
+                <img src="images/user.png" width="60" height="60" onerror="this.onerror=null;D:/users/Software/Xampp/htdocs/Project/Templates/Admin/AdminBSBMaterialDesign-master/images/user.png;" alt="Image not found" />
                     
                     
                 </div>
@@ -200,7 +195,7 @@ th,td{
                             echo $_SESSION["uname"];
                             echo "<br>";
                             ?>
-                    </div>
+
                     <div class="email">
                             <?php
                             include 'Connection.php';
@@ -213,6 +208,13 @@ th,td{
                             ?>
 
                     </div>
+                    <div class="btn-group user-helper-dropdown">
+                            <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                            <ul class="dropdown-menu pull-right">
+                                <li><a href="sign-out.php"><i class="material-icons">exit_to_app</i>Sign Out</a></li>
+                            </ul>
+                        </div>
+</div>
                     
                 </div>
             </div>
@@ -228,19 +230,19 @@ th,td{
                     </li>
                     <li>
                         <a href="pages/typography.php">
-                            <i class="material-icons">text_fields</i>
+                            <i class="material-icons">track_changes</i>
                             <span>Complain Tracking</span>
                         </a>
                     </li>
                     <li>
                         <a href="TimeManagement.php">
-                            <i class="material-icons">layers</i>
+                            <i class="material-icons">watch_later</i>
                             <span>Time Management</span>
                         </a>
                     </li>
-                    <li>
+                    <li class = "active">
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">widgets</i>
+                            <i class="material-icons">local_shipping</i>
                             <span>Recycling</span>
                         </a>
                         <ul class="ml-menu">
@@ -261,9 +263,9 @@ th,td{
                             </li>
                         </ul>
                     </li>
-                    <li class = "active">
+                    <li>
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">assignment</i>
+                            <i class="material-icons">delete</i>
                             <span>IoT Dustbin</span>
                         </a>
                          <ul class="ml-menu">
@@ -286,34 +288,62 @@ th,td{
     </section>
         <!-- #END# Left Sidebar -->
         
-    <section class="content">
-        <div class="container-fluid">
-          <h1 style="background-color:#00BFFF"> <marquee direction:="right">Welcome to history</marquee> </h1>
-        </div>
-        <div>
-            <table style="position: relative;height: 300px; top: 170px;color:white;font-family: Times Roman;" class="center">
-        <tr>
-            <th style=" background-color: #FF1493"><b>UNIQUE ID</b></th>
-            <th style="width: 80%; background-color: #FF1493"><b>DESCRIPTION</b></th>
-        </tr>
+        <section class="content">
+            <!--Requests from user -->
+            <div class="row clearfix">
+                <div class="col-xs-8 col-sm-8 col-md-6 col-lg-12">
+                    <div class="card">
+                        <div class="header bg-amber js-basic-example">
+                            <h2>User Requests</h2>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover dashboard-task-infos dataTable js-basic-example">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Address</th>
+                                            <th>Type</th>
+                                            <th>Description</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                            $server = "localhost";
+                                            $user = "root";
+                                            $pass = "";
+                                            $dbname = "user";
+                                            $conn = mysqli_connect($server,$user,$pass,$dbname);
+                                            $sql = "select * from recycling";
+                                            $result = mysqli_query($conn,$sql);
 
-        <tr style="background-color: #33BBC1;text-align: center;">
-            <td>TESTING 1</td>
-            <td>DESCRIPTION 1</td>
-        </tr>
 
-        <tr style="background-color: #33BBC1;text-align: center;">
-            <td>TESTING 2</td>
-            <td>DESCRIPTION 2</td>
-        </tr>
-
-        <tr style="background-color: #33BBC1; text-align:center;">
-            <td>TESTING 3</td>
-            <td>DESCRIPTION 3</td>
-        </tr>
-    </table>
-        </div> 
+                                            while ($row=mysqli_fetch_array($result)) {
+                                                $id = $row['recyclingid'];
+                                                $_SESSION['recyclingID'] = $id;
+                                                $email_user = $row['email'];
+                                                $_SESSION['email_user'] = $email_user;
+                                                echo '<form method="POST">';
+                                                echo "<tr>";
+                                                echo "<td>".$row['recyclingid']."</td>";
+                                                echo "<td>".$row['address']."</td>";
+                                                echo "<td>".$row['typeofwaste']."</td>";
+                                                echo "<td>".$row['requestinfo']."</td>";
+                                                echo "<td>".'<input type="submit" name="grant_voucher" value="Grant Reward" class="btn bg-blue waves-effect waves-light">'."</td>";
+                                                echo "</tr>";
+                                                echo '</form>';
+                                            }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!--#End# Requests from user-->
     </section>
+
 
     <!-- Jquery Core Js -->
     <script src="plugins/jquery/jquery.min.js"></script>
