@@ -13,10 +13,11 @@ mobile number etc.
 ->Add mediator module in which admin can add mediators in time management
 ->Ask about Ahmedabad RMC Portal
 
-->Home Page Statitics
-->Send mail to user when status of complain is changed by admin
-->Send mail to user when status of complain is changed by admin in 
-  recycling
-->When Admin changes status of complain it should be visible to user
+->Update Login validation
+->Delete entry in table when resolved is press
+Recycling_History cannot find signout file
+
+
+
 
 

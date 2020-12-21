@@ -2,6 +2,7 @@
 <?php
     session_start();
     include "Connection.php";
+    
     if(!isset($_SESSION['admin'])){
         header("location:examples/sign-in.php");
         die();
@@ -10,7 +11,7 @@
      {
          $complainID=$_SESSION["complainID"];
          $email_user=$_SESSION["email_user"];
-         //$email = S_POST[$row["email"]];
+         
          if(mail($email_user,'Update regarding your complaint '.$complainID,'Respected citizen,
          We are sorry for the inconvinency. We have received your complain and we will make our best and swift efforts to fix the leakage problem and take care of leakage of water and in your area.
          Regards and Thank you.'))
@@ -25,18 +26,39 @@
  
      if(isset($_POST['resolved_leakage_complain']))
      {
+         
          $complainID=$_SESSION["complainID"];
          $email_user = $_SESSION["email"];
+         //header("Location:../Testing_Alert.php");
+
+         $server = "localhost";
+         $user = "root";
+         $password = "";
+         $db = "user";
+
+         $connection = mysqli_connect($server,$user,$password,$db);
+         $query = "select * from complain where complainid=$complainID";
+         $result=mysqli_query($connection,$query);
+         $row = mysqli_fetch_array($result);
          if(mail($email_user,'Update regarding your complaint '.$complainID,'Respected citizen,
-          Your complain for water leakage has been resolved. Please contact us if you face any inconviniency.
-         Regards and Thank you.'))
-         {
-             echo "<script>alert('Complain status has been updated')</script>";
-         }
-         else
-         {
-             echo "<script>alert('Complain status cannot be updated')</script>";
-         }
+         Your complain for water leakage has been resolved. Please contact us if you face any inconviniency.
+        Regards and Thank you.'))
+        {
+            echo "<script>alert('Complain status has been updated')</script>";
+        }
+        else
+        {
+            echo "<script>alert('Complain status cannot be updated')</script>";
+        }
+
+         $insert_query = "insert into complainhistory values('".$row["uniqueid"]."','".$row["complainid"]."',0000000000,'".$row["address"]."','".$row["complaininfo"]."')";
+
+         mysqli_query($connection,$insert_query);
+        
+         $delete_query = "delete from complain where complainid=$complainID";
+         mysqli_query($connection,$delete_query);
+         
+
      }
 ?>
 <!DOCTYPE html>
@@ -134,9 +156,7 @@
                             //$email = $_POST['email'];
                             //$password = $_POST['password'];
                             //$name = $_POST['uname'];
-                            
-                            echo $_SESSION["email"];
-                            
+                            echo $_SESSION["email"];  
                             ?>
 
                     </div>
@@ -183,12 +203,6 @@
                                     <span>Info</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="/examples/sign-up.php">
-                                    <span>Tenders</span>
-                                </a>
-                               
-                            </li>
 
                             <li>
                                <a href="../History_Recycling.php">
@@ -206,7 +220,7 @@
                         <ul class="ml-menu">
                             <li>
                                 <a href="../IoTDustbin.php">Tracking</a>          
-                                <a href="../History_Dustbin.php">History</a>
+                                <!--<a href="../History_Dustbin.php">History</a>-->
                             </li>
                         </ul>
                     </li>
@@ -317,9 +331,11 @@
 
 
                                             while ($row=mysqli_fetch_array($result)) {
+                                                $description = $row['complaininfo'];
+                                                $_SESSION["comp_desc"] = $description;
                                                 $id = $row['complainid'];
                                                 $_SESSION['complainID'] = $id;
-                                                $email_user = $row['mail'];
+                                                $email_user = $row['email'];
                                                 $_SESSION['email_user'] = $email_user;
                                                 echo '<form method="POST">';
                                                 echo "<tr>";
@@ -327,8 +343,8 @@
                                                 echo "<td>".$row['address']."</td>";
                                                 echo "<td>".$row['problem']."</td>";
                                                 echo "<td>".$row['complaininfo']."</td>";
-                                                echo "<td>".'<input type="submit" name="received_leakage_complain" value="RECEIVED" class="btn bg-blue waves-effect waves-light">'."</td>";
-                                                echo "<td>".'<input type="submit" name="resolved_leakage_complain" value="RESOLVED" class="btn bg-cyan waves-effect waves-light">'."</td>";
+                                                echo "<td>".'<input type="submit" id="received_leakage_complain" name="received_leakage_complain" value="RECEIVED" class="btn bg-blue waves-effect waves-light">'."</td>";
+                                                echo "<td>".'<input type="submit" id="resolved_leakage_complain" name="resolved_leakage_complain" value="RESOLVED" class="btn bg-cyan waves-effect waves-light">'."</td>";
                                                 echo "</tr>";
                                                 echo '</form>';
                                             }

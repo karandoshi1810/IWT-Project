@@ -36,30 +36,13 @@ if(isset($_POST['login']))
 		}
 		else
 		{
-			
-			"<html>
-			<body>
-
-				document.getElementsByName(password).autofocus;
-				
-			</body>
-			</html>";
 			header("Location:sign-in.php");
 		}	
 	}
 
 	else
 	{
-		//document.getElementById('email').placeholder='Incorrect E-mail ID';
-		"<html>
-		<body>
-
-			document.getElementsByName(email).autofocus;
-			
-		</body>
-		</html>";
 		header("Location:sign-in.php");
-		
 	}
 	//$sql = "select * from registration where email='".$email."',password='".$pwd."' ";
 	

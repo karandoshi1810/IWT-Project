@@ -23,6 +23,16 @@
 
     <!-- Custom Css -->
     <link href="../../css/style.css" rel="stylesheet">
+
+    <script>
+        function validateForm()
+        {
+            var email = document.getElementById("email").value;
+            var password = documnet.getElementById("password").value;
+            
+
+        }
+    </script>
 </head>
 
 <body class="login-page">
@@ -33,7 +43,7 @@
         </div>
         <div class="card">
             <div class="body">
-                <form id="sign_in" method="POST" action="login.php">
+                <form id="sign_in" method="POST" action="login.php" onsubmit="validateData()">
                     <div class="msg">Sign in to start your session</div>
                     <div class="input-group">
                         <span class="input-group-addon">

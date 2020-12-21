@@ -163,7 +163,7 @@
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">local_changes</i>
+                            <i class="material-icons">local_shipping</i>
                             <span>Recycling</span>
                         </a>
                         <ul class="ml-menu">
@@ -171,12 +171,6 @@
                                 <a href="../Recycling.php">
                                     <span>Info</span>
                                 </a>
-                            </li>
-                            <li>
-                                <a href="/examples/sign-up.php">
-                                    <span>Tenders</span>
-                                </a>
-                               
                             </li>
 
                             <li>
@@ -195,7 +189,7 @@
                         <ul class="ml-menu">
                             <li>
                                 <a href="../IoTDustbin.php">Tracking</a>          
-                                <a href="../History_Dustbin.php">History</a>
+                                <!--<a href="../History_Dustbin.php">History</a>-->
                             </li>
                         </ul>
                     </li>

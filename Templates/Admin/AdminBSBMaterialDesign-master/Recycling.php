@@ -16,7 +16,9 @@
         $address = $_POST['address'];
         $weight = $_POST['weight'];
         $ground = $_POST['ground'];
-        $sql = "insert into recycling values('".$address."','".$weight."','".$ground."')";
+        $datetime = $_POST['datatime'];
+        $vannumber = $_POST['van'];
+        $sql = "insert into recycling values('".$address."','".$weight."','".$ground."','".$datetime."','".$vannumber."')";
         if(mysqli_query($conn,$sql))
         {
             echo '<script>alert("Updated Successfully")</script>';
@@ -211,11 +213,6 @@ img {
                                 </a>
                             </li>
                             <li>
-                                <a href="E:/KARAN-ICT/SEMESTER-5/IWT/Project/Templates/Admin/AdminBSBMaterialDesign-master/pages/examples/sign-up.php">
-                                    <span>Tenders</span>
-                                </a>
-                            </li>
-                            <li>
                                 <a href="History_Recycling.php">
                                     <span>History</span>
                                 </a>
@@ -230,7 +227,7 @@ img {
                          <ul class="ml-menu">
                             <li>
                                 <a href="IoTDustbin.php">Tracking</a>
-                                <a href="History_Dustbin.php">History</a>
+                                <!--<a href="History_Dustbin.php">History</a>-->
                             </li>
                         </ul>
                     </li>
@@ -272,10 +269,25 @@ img {
                                                 <label for="weight" class="col-sm-2 control-label">Weight of Waste</label>
                                                 <div class="col-sm-10">
                                                     <div class="form-line">
-                                                    <input type="text" class="form-control" id="weight" name="weight" placeholder="Weight of waste(in tonnes)" required>
+                                                    <input type="text" class="form-control" id="weight" name="weight" placeholder="Weight of waste(in kgs)" required>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="form-group">
+                                                <label for="van" class="col-sm-2 control-label">Van Number</label>
+                                                <div class="col-sm-10">
+                                                    <div class="form-line">
+                                                        <input type="text" class="form-control" id="van" name="van" placeholder="GJ-xx xx xxxx" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-0 col-sm-10">
+                                                    <label for="datetime" style = "margin-left:13px;">Choose a date and time:</label>
+                                                    <input type="datetime-local" id="datetime" name="datetime"><br><br><br><br>
+                                                </div>
+                                            </div>
+                                            
                                             <div class="form-group">
                                                 <label for="group" class="col-sm-2 control-label">Dumping Ground</label>
                                                 <div class="col-sm-3">

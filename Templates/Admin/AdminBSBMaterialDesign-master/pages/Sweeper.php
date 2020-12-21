@@ -9,11 +9,12 @@
      if(isset($_POST['received_sweeper_complain']))
      {
          $complainID=$_SESSION["complainID"];
-         $email_user = $_POST["email_user"];
+         $email_user = $_SESSION["email_user"];
          if(mail($email_user,'Update regarding your complaint '.$complainID,'Respected citizen,
          We are sorry for the inconvinency. We have received your complain and we will make our best and swift efforts to fix the leakage problem and take care of leakage of water and in your area.
          Regards and Thank you.'))
          {
+             
              echo "<script>alert('Complain status has been updated')</script>";
          }
          else
@@ -177,12 +178,6 @@
                                     <span>Info</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="/examples/sign-up.php">
-                                    <span>Tenders</span>
-                                </a>
-                               
-                            </li>
 
                             <li>
                                <a href="../History_Recycling.php">
@@ -200,7 +195,7 @@
                         <ul class="ml-menu">
                             <li>
                                 <a href="../IoTDustbin.php">Tracking</a>          
-                                <a href="../History_Dustbin.php">History</a>
+                                <!--<a href="../History_Dustbin.php">History</a>-->
                             </li>
                         </ul>
                     </li>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 20, 2020 at 07:17 PM
+-- Generation Time: Dec 21, 2020 at 12:48 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -41,11 +41,11 @@ CREATE TABLE `complain` (
 --
 
 INSERT INTO `complain` (`uniqueid`, `address`, `complaininfo`, `problem`, `complainid`, `email`) VALUES
-('34561222', '\"KRUPAL\" Desaiwadi Shamnath mandir road,', 'There is lekage problem in this area. please connect me with any technician.', 'Leakage', 68477728, 'krupaljivrajani86861@gmail.com'),
-('34216688', 'manhar plot, street no 1, mava', 'In this area the sweepers are not coming. ', 'Sweeper', 27892899, 'smitvora12@gmail.com'),
-('67438150', 'Nanavati chowk, Gandhigram, Rajkot', 'the dustbin truck is not coming daily. please look into it.', 'Dustbin', 58690425, 'karandoshi@gmail.com'),
-('48911200', 'sardar chowk, opp shiv colony, jetpur', 'in our area one dog has died so please send the persons to pick it up.', 'Died', 73744739, 'bhavik.kalpesh104413@marwadiuniversity.a'),
-('98527398', 'Astron Chowk, Poojara telecom Rajkot', 'In this area the sweepers are not coming. ', 'Sweeper', 59508504, 'poojaratelecom@gmail.com');
+('34561222', '\"KRUPAL\" Desaiwadi Shamnath mandir road,', 'There is problem of road in our area. The roads are not smooth and because of rough road accident happens.', 'other', 90641642, 'krupaljivrajani86861@gmail.com'),
+('34216688', 'manhar plot, street no 1, mava', 'There is lekage problem in this area. please connect me with any technician.', 'Leakage', 69282487, 'smitvora12@gmail.com'),
+('98352908', 'Nanavati chowk, Gandhigram, Rajkot', 'In this area the sweepers are not coming. ', 'Sweeper', 23514855, 'karan.doshi105417@marwadiuniversity.ac.i'),
+('98527398', 'sardar chowk, opp shiv colony, jetpur', 'the dustbin truck is not coming daily. please look into it.', 'Dustbin', 31073327, 'krupaljivrajani2651@gmail.com'),
+('56217775', 'Virani chowk Rajkot', 'in our area one dog has died so please send the persons to pick it up.', 'Died', 51631938, 'krupal.jivrajani105468@marwadiuniversity');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

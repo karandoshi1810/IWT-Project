@@ -256,11 +256,6 @@ th,td{
                                 </a>
                             </li>
                             <li>
-                                <a href="pages/TenderSignUp.php">
-                                    <span>Tenders</span>
-                                </a>
-                            </li>
-                            <li>
                                 <a href="History_Recycling.php">
                                     <span>History</span>
                                 </a>

@@ -213,7 +213,7 @@ th,td{
                             <ul class="dropdown-menu pull-right">
                                 <li><a href="sign-out.php"><i class="material-icons">exit_to_app</i>Sign Out</a></li>
                             </ul>
-                        </div>
+                    </div>
 </div>
                     
                 </div>
@@ -252,11 +252,6 @@ th,td{
                                 </a>
                             </li>
                             <li>
-                                <a href="E:/KARAN-ICT/SEMESTER-5/IWT/Project/Templates/Admin/AdminBSBMaterialDesign-master/pages/examples/sign-up.php">
-                                    <span>Tenders</span>
-                                </a>
-                            </li>
-                            <li>
                                 <a href="History_Recycling.php">
                                     <span>History</span>
                                 </a>
@@ -271,7 +266,7 @@ th,td{
                          <ul class="ml-menu">
                             <li>
                                 <a href="IoTDustbin.php">Tracking</a>
-                                <a href="History_Dustbin.php">History</a>
+                                <!--<a href="History_Dustbin.php">History</a>-->
                             </li>
                         </ul>
                     </li>

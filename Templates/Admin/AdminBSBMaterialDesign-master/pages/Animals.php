@@ -180,12 +180,6 @@
                                     <span>Info</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="/examples/sign-up.php">
-                                    <span>Tenders</span>
-                                </a>
-                               
-                            </li>
 
                             <li>
                                <a href="../History_Recycling.php">
@@ -203,7 +197,7 @@
                         <ul class="ml-menu">
                             <li>
                                 <a href="../IoTDustbin.php">Tracking</a>          
-                                <a href="../History_Dustbin.php">History</a>
+                                <!--<a href="../History_Dustbin.php">History</a>-->
                             </li>
                         </ul>
                     </li>
@@ -248,7 +242,7 @@
                                             $pass = "";
                                             $dbname = "user";
                                             $conn = mysqli_connect($server,$user,$pass,$dbname);
-                                            $sql = "select * from complain where problem='Animal'";
+                                            $sql = "select * from complain where problem='Died'";
                                             $result = mysqli_query($conn,$sql);
 
 
