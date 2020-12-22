@@ -36,6 +36,22 @@
          {
              echo "<script>alert('Complain status cannot be updated')</script>";
          }
+         $server = "localhost";
+         $user = "root";
+         $password = "";
+         $db = "user";
+
+         $connection = mysqli_connect($server,$user,$password,$db);
+         $query = "select * from complain where complainid=$complainID";
+         $result=mysqli_query($connection,$query);
+         $row = mysqli_fetch_array($result);
+
+         $insert_query = "insert into complainhistory values('".$row["uniqueid"]."','".$row["complainid"]."',0000000000,'".$row["address"]."','".$row["complaininfo"]."')";
+
+         mysqli_query($conn,$insert_query);
+        
+         $delete_query = "delete from complain where complainid=$complainID";
+         mysqli_query($connection,$delete_query);
      }
 ?>
 <!DOCTYPE html>
@@ -159,19 +175,19 @@
                     </li>
                     <li class="active">
                         <a href="typography.php">
-                            <i class="material-icons">text_fields</i>
+                            <i class="material-icons">track_changes</i>
                             <span>Complain Tracking</span>
                         </a>
                     </li>
                     <li>
                         <a href="../TimeManagement.php">
-                            <i class="material-icons">layers</i>
+                            <i class="material-icons">watch_later</i>
                             <span>Time Management</span>
                         </a>
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">widgets</i>
+                            <i class="material-icons">local_shipping</i>
                             <span>Recycling</span>
                         </a>
                         <ul class="ml-menu">
@@ -191,12 +207,12 @@
 
                     <li>
                          <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">layers</i>
+                            <i class="material-icons">delete</i>
                             <span>IoT Dustbin</span>
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="../IoTDustbin.php">Tracking</a>          
+                                <a href="iot_dustbin.php">Tracking</a>          
                                 <!--<a href="../History_Dustbin.php">History</a>-->
                             </li>
                         </ul>

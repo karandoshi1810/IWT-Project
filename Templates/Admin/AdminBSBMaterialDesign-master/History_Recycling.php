@@ -19,6 +19,22 @@
          {
              echo "<script>alert('Complain status cannot be updated')</script>";
          }
+         $server = "localhost";
+         $user = "root";
+         $password = "";
+         $db = "user";
+
+         $connection = mysqli_connect($server,$user,$password,$db);
+         $query = "select * from recycling where recyclingid=$recyclingID";
+         $result=mysqli_query($connection,$query);
+         $row = mysqli_fetch_array($result);
+
+         $insert_query = "insert into complainhistory values('".$row["uniqueid"]."',000000,'".$row["feedbackid"]."','".$row["address"]."','".$row["requestinfo"]."')";
+
+         mysqli_query($conn,$insert_query);
+        
+         $delete_query = "delete from complain where complainid=$complainID";
+         mysqli_query($connection,$delete_query);
      }
 ?>
 
@@ -265,7 +281,7 @@ th,td{
                         </a>
                          <ul class="ml-menu">
                             <li>
-                                <a href="IoTDustbin.php">Tracking</a>
+                                <a href="iot_dustbin.php">Tracking</a>
                                 <!--<a href="History_Dustbin.php">History</a>-->
                             </li>
                         </ul>

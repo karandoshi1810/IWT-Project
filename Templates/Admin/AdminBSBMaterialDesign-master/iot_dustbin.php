@@ -59,7 +59,7 @@
 <h1>Click below the button to track the Status of Dustbin</h1>
 
 <div class="btn-group">
-  <button href="" style="width:50%"><b>ID:- 101</b></button>
+  <button onclick="location.href='id_101.php'" style="width:50%"><b>ID:- 101</b></button>
   <button style="width:50%"><b>ID:- 102</b></button><br><br><br>
   <button style="width:50%"><b>ID:- 103</b></button>
   <button style="width:50%"><b>ID:- 104</b></button><br><br><br>

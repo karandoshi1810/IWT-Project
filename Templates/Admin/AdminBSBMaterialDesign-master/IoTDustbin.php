@@ -210,7 +210,7 @@ img {
                         </a>
                          <ul class="ml-menu">
                             <li>
-                                <a href="IoTDustbin.php">Tracking</a>
+                                <a href="iot_dustbin.php">Tracking</a>
                                 <!--<a href="History_Dustbin.php">History</a>-->
                             </li>
                         </ul>

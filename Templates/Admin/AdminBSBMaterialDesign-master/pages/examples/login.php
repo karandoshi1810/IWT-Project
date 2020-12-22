@@ -29,23 +29,28 @@ if(isset($_POST['login']))
 				else
 				{
 					echo "<br> Query not successfull";
-					header("Location:sign-up.php","Please enter valid credentials!!");
-					//header("");
+					header("Location:sign-in.php");
 				}
 			}
-		}
-		else
-		{
-			header("Location:sign-in.php");
+			else
+			{
+				header("Location:sign-in.php");
+			}
+			
 		}	
+		else
+			{
+				header("Location:sign-in.php");
+			}
 	}
-
 	else
 	{
 		header("Location:sign-in.php");
 	}
-	//$sql = "select * from registration where email='".$email."',password='".$pwd."' ";
-	
-	
+		
 }
+else
+	{
+		header("Location:sign-in.php");
+	}
 ?>

@@ -26,21 +26,9 @@
  
      if(isset($_POST['resolved_leakage_complain']))
      {
-         
-         $complainID=$_SESSION["complainID"];
-         $email_user = $_SESSION["email"];
-         //header("Location:../Testing_Alert.php");
-
-         $server = "localhost";
-         $user = "root";
-         $password = "";
-         $db = "user";
-
-         $connection = mysqli_connect($server,$user,$password,$db);
-         $query = "select * from complain where complainid=$complainID";
-         $result=mysqli_query($connection,$query);
-         $row = mysqli_fetch_array($result);
-         if(mail($email_user,'Update regarding your complaint '.$complainID,'Respected citizen,
+        $complainID=$_SESSION["complainID"];
+        $email_user = $_SESSION["email"];
+        if(mail($email_user,'Update regarding your complaint '.$complainID,'Respected citizen,
          Your complain for water leakage has been resolved. Please contact us if you face any inconviniency.
         Regards and Thank you.'))
         {
@@ -50,10 +38,20 @@
         {
             echo "<script>alert('Complain status cannot be updated')</script>";
         }
+         
+         $server = "localhost";
+         $user = "root";
+         $password = "";
+         $db = "user";
+
+         $connection = mysqli_connect($server,$user,$password,$db);
+         $query = "select * from complain where complainid=$complainID";
+         $result=mysqli_query($connection,$query);
+         $row = mysqli_fetch_array($result);
 
          $insert_query = "insert into complainhistory values('".$row["uniqueid"]."','".$row["complainid"]."',0000000000,'".$row["address"]."','".$row["complaininfo"]."')";
 
-         mysqli_query($connection,$insert_query);
+         mysqli_query($conn,$insert_query);
         
          $delete_query = "delete from complain where complainid=$complainID";
          mysqli_query($connection,$delete_query);
@@ -219,7 +217,7 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="../IoTDustbin.php">Tracking</a>          
+                                <a href="../iot_dustbin.php">Tracking</a>          
                                 <!--<a href="../History_Dustbin.php">History</a>-->
                             </li>
                         </ul>
@@ -331,8 +329,6 @@
 
 
                                             while ($row=mysqli_fetch_array($result)) {
-                                                $description = $row['complaininfo'];
-                                                $_SESSION["comp_desc"] = $description;
                                                 $id = $row['complainid'];
                                                 $_SESSION['complainID'] = $id;
                                                 $email_user = $row['email'];
