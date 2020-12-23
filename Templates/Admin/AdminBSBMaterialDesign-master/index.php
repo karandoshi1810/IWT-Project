@@ -238,9 +238,9 @@
                                 $server = "localhost";
                                 $user = "root";
                                 $pass = "";
-                                $dbname = "user";
+                                $dbname = "admin";
                                 $conn = mysqli_connect($server,$user,$pass,$dbname);
-                                $sql = "select * from signup";
+                                $sql = "select * from registration";
                                 $result=mysqli_query($conn,$sql);
                                 $records_visitors=mysqli_num_rows($result);
                             ?>

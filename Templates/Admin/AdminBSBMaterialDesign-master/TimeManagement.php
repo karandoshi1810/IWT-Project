@@ -15,14 +15,16 @@
             echo '<script> alert("Updated timings to database successfully.") </script>';
         }
         $to_email = "karan.doshi105417@marwadiuniversity.ac.in";
-        if (mail('karan.doshi105417@marwadiuniversity.ac.in', 'New timings for water in your => '. $affected_ward, 'The updated timings for household water in your ward from tomorrow is=>'. $new_time, 'From: karan.doshi105417@marwadiuniversity.ac.in')) 
+        if (mail('karan.doshi105417@marwadiuniversity.ac.in', 'New timings for water in your => '. $affected_ward, 'The updated timings for household water in your ward from is=>'. $new_time, 'From: karan.doshi105417@marwadiuniversity.ac.in')) 
         {
 
             echo '<script> alert("Updated timings sent successfully.") </script>';
+            header("Location:TimeManagement.php");
         } 
         else 
         {
             echo '<script> alert("Updated timings cannot be sent successfully.") </script>';
+            header("Location:TimeManagement.php");
         }
     }
     
@@ -65,6 +67,9 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="css/themes/all-themes.css" rel="stylesheet" />
+
+    <!-- Multi Select Css -->
+    <link href="plugins/multi-select/css/multi-select.css" rel="stylesheet">
 
 
     <style>
@@ -305,12 +310,11 @@ img {
                                     <option value="Ward-29"> Ward-29 </option>
                                 </select>
                             <!--DateTime Picker -->
-                            <label for="datetime" style = "margin-left:100px;">Choose a date and time:</label>
-                            <input type="datetime-local" id="datetime" name="datetime"><br><br><br><br>
-                            <!--<input type="submit" value = "Change Time" name = "changeTime" class="btn btn-primary waves-effect" style="margin-left:70px;"><br><br><br><br>-->
-                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="margin-left:260px;"><br><br>
-                                    <button class="btn bg-green waves-effect" data-type="success" value="Change Time" name="changeTime">CHANGE TIME</button>
-                            </div>
+                                <label for="datetime" style = "margin-left:100px;">Choose a date and time:</label>
+                                <input type="datetime-local" id="datetime" name="datetime"><br><br><br><br>
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="margin-left:260px;"><br><br>
+                                        <button class="btn bg-green waves-effect" data-type="success" value="Change Time" name="changeTime">CHANGE TIME</button>
+                                </div>
                             <!--#END# DateTime Picker -->
                         </form>
                 </div>
@@ -371,6 +375,9 @@ img {
 
     <!-- Demo Js -->
     <script src="js/demo.js"></script>
+
+    <!-- Multi Select Plugin Js -->
+    <script src="plugins/multi-select/js/jquery.multi-select.js"></script>
 
     
 </body>

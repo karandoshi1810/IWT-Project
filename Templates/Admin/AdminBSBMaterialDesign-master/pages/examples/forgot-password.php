@@ -8,17 +8,22 @@
     {
         $email = $_POST['email'];
         $sql = "select * from registration where email='".$email."' ";
-        if(mysqli_query($conn,$sql)==TRUE)
+        if(mysqli_query($conn,$sql)!=FALSE)
         {
-            $new_password = substr(str_shuffle($str),0,8);
+            
+            $new_password = substr(str_shuffle($str),1,8);
+            $update = "insert into login (email,forgotPassword) values('$email','$new_password')";
+            $result = mysqli_query($conn,$update);
+            $update_regis = "UPDATE registration SET password = '$new_password' WHERE email='$email' ";
+            $result1 = mysqli_query($conn,$update_regis);
             mail($email,'New Password','Respected user,
             Your new password for the portal is '.$new_password);
-            $update_password = "insert into login values($email,$new_password)";
-            $result = mysqli_query($conn,$update_password);
+            header("Location:sign-in.php");
         }
         else
         {
-            echo 'You are not authorized to enter this portal';
+            echo '<script>alert("You are not authorized to enter this portal")</script>';
+            header("Location:forgot-password.php");
         }
        
     }
@@ -29,7 +34,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Forgot Password | Bootstrap Based Admin Template - Material Design</title>
+    <title>Forgot Password</title>
     <!-- Favicon-->
     <link rel="icon" href="../../favicon.ico" type="image/x-icon">
 

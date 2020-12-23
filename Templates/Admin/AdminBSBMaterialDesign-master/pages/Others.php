@@ -28,7 +28,7 @@
          $complainID=$_SESSION["complainID"];
          $email_user = $_SESSION["email_user"];
          if(mail($email_user,'Update regarding your complaint '.$complainID,'Respected citizen,
-          Your complain for water leakage has been resolved. Please contact us if you face any inconviniency.
+          Your complain has been resolved. Please contact us if you face any inconviniency.
          Regards and Thank you.'))
          {
              echo "<script>alert('Complain status has been updated')</script>";
@@ -47,7 +47,7 @@
          $result=mysqli_query($connection,$query);
          $row = mysqli_fetch_array($result);
 
-         $insert_query = "insert into complainhistory values('".$row["uniqueid"]."','".$row["complainid"]."',0000000000,'".$row["address"]."','".$row["complaininfo"]."')";
+         $insert_query = "insert into complainhistory values('".$row["uniqueid"]."','".$row["complainid"]."',0000000000,00000000,'".$row["address"]."','".$row["complaininfo"]."')";
 
          mysqli_query($conn,$insert_query);
         
@@ -242,7 +242,9 @@
                         </div>
                         <div class="body">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover dashboard-task-infos dataTable js-basic-example">
+                            <table class="table table-bordered table-striped table-hover dashboard-task-infos dataTable js-basic-example" id="table">
+                            <input type="button" id="print" name="print" value="Print" class="btn bg-pink waves-effect waves-light" onclick=printData() style="margin-right:10px;">
+                            <input type="button" id="sort" name="sort" value="Sort" class="btn bg-pink waves-effect waves-light" onclick=sortTable()>
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -310,6 +312,52 @@
 
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>
+    <script>
+        function printData()
+        {
+            var divToPrint=document.getElementById("table");
+            newWin= window.open("");
+            newWin.document.write(divToPrint.outerHTML);
+            newWin.print();
+            newWin.close();
+        }
+    </script>
+    <script>
+    function sortTable() {
+    var table, rows, switching, i, x, y, shouldSwitch;
+    table = document.getElementById("table");
+    switching = true;
+    /*Make a loop that will continue until
+    no switching has been done:*/
+    while (switching) {
+        //start by saying: no switching is done:
+        switching = false;
+        rows = table.rows;
+        /*Loop through all table rows (except the
+        first, which contains table headers):*/
+        for (i = 1; i < (rows.length - 1); i++) {
+        //start by saying there should be no switching:
+        shouldSwitch = false;
+        /*Get the two elements you want to compare,
+        one from current row and one from the next:*/
+        x = rows[i].getElementsByTagName("TD")[0];
+        y = rows[i + 1].getElementsByTagName("TD")[0];
+        //check if the two rows should switch place:
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+            //if so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+        }
+        }
+        if (shouldSwitch) {
+        /*If a switch has been marked, make the switch
+        and mark that a switch has been done:*/
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+        }
+    }
+    }
+</script>
 </body>
 
 </html>

@@ -7,6 +7,7 @@
      }
      if(isset($_POST['grant_voucher']))
      {
+         $uniqueid = $_SESSION["uniqueid"];
          $recyclingID=$_SESSION["recyclingID"];
          $email_user = $_SESSION["email_user"];
          if(mail($email_user,'Update regarding your complaint '.$recyclingID,'Respected citizen,
@@ -29,11 +30,11 @@
          $result=mysqli_query($connection,$query);
          $row = mysqli_fetch_array($result);
 
-         $insert_query = "insert into complainhistory values('".$row["uniqueid"]."',000000,'".$row["feedbackid"]."','".$row["address"]."','".$row["requestinfo"]."')";
+         $insert_query = "insert into complainhistory values('".$row["uniqueid"]."',000000,000000,'".$row["recyclingid"]."','".$row["address"]."','".$row["requestinfo"]."')";
 
          mysqli_query($conn,$insert_query);
         
-         $delete_query = "delete from complain where complainid=$complainID";
+         $delete_query = "delete from recycling where recyclingid=$recyclingID";
          mysqli_query($connection,$delete_query);
      }
 ?>
@@ -331,6 +332,8 @@ th,td{
 
 
                                             while ($row=mysqli_fetch_array($result)) {
+                                                $uniqueID = $row['uniqueid'];
+                                                $_SESSION['uniqueid'] = $uniqueID;
                                                 $id = $row['recyclingid'];
                                                 $_SESSION['recyclingID'] = $id;
                                                 $email_user = $row['email'];

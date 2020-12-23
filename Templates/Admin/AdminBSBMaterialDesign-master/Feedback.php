@@ -132,19 +132,19 @@
                     </li>
                     <li>
                         <a href="pages/typography.php">
-                            <i class="material-icons">text_fields</i>
+                            <i class="material-icons">track_changes</i>
                             <span>Complain Tracking</span>
                         </a>
                     </li>
                     <li>
                         <a href="TimeManagement.php">
-                            <i class="material-icons">layers</i>
+                            <i class="material-icons">watch_later</i>
                             <span>Time Management</span>
                         </a>
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">widgets</i>
+                            <i class="material-icons">local_shipping</i>
                             <span>Recycling</span>
                         </a>
                         <ul class="ml-menu">
@@ -152,8 +152,8 @@
                                 <a href="Recycling.php">
                                     <span>Info</span>
                                 </a>
-                            </li>
-                                <a href="History_Recycling.php">
+                                <li>
+                               <a href="History_Recycling.php">
                                     <span>History</span>
                                 </a>
                             </li>
@@ -161,7 +161,7 @@
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">assignment</i>
+                            <i class="material-icons">delete</i>
                             <span>IoT Dustbin</span>
                         </a>
                          <ul class="ml-menu">
@@ -198,7 +198,7 @@
     <section class="content">
                 <div class="row clearfix">
                 <!-- Show Feedback -->
-                <div class="col-lg-12 col-md-10 col-sm-10 col-xs-10">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header bg-red">
                             <h2>FEEDBACKS</h2>
@@ -206,7 +206,9 @@
                         
                         <div class="body">
                         <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover js-exportable">
+                        <table class="table table-bordered table-striped table-hover dashboard-task-infos dataTable js-basic-example" id="table">
+                            <input type="button" id="print" name="print" value="Print" class="btn bg-pink waves-effect waves-light" onclick=printData() style="margin-right:10px;">
+                            <input type="button" id="sort" name="sort" value="Sort" class="btn bg-pink waves-effect waves-light" onclick=sortTable()>
                                     <thead>
                                         <tr>
                                             <th>Feedback-ID</th>
@@ -254,7 +256,7 @@
     <script src="plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 
      <!-- Bootstrap Notify Plugin Js -->
-     <script src="../../plugins/bootstrap-notify/bootstrap-notify.js"></script>
+     <script src="plugins/bootstrap-notify/bootstrap-notify.js"></script>
 
     <!-- Waves Effect Plugin Js -->
     <script src="plugins/node-waves/waves.js"></script>
@@ -280,7 +282,7 @@
     <script src="plugins/jquery-sparkline/jquery.sparkline.js"></script>
 
     <!-- RangeSlider Plugin Js -->
-    <script src="../../plugins/ion-rangeslider/js/ion.rangeSlider.js"></script>
+    <script src="plugins/ion-rangeslider/js/ion.rangeSlider.js"></script>
 
     <!-- Custom Js -->
     <script src="js/admin.js"></script>
@@ -299,6 +301,53 @@
 
     <!-- Demo Js -->
     <script src="js/demo.js"></script>
+    <script>
+        function printData()
+        {
+            var divToPrint=document.getElementById("table");
+            newWin= window.open("");
+            newWin.document.write(divToPrint.outerHTML);
+            newWin.print();
+            newWin.close();
+        }
+    </script>
+    
+    <script>
+    function sortTable() {
+    var table, rows, switching, i, x, y, shouldSwitch;
+    table = document.getElementById("table");
+    switching = true;
+    /*Make a loop that will continue until
+    no switching has been done:*/
+    while (switching) {
+        //start by saying: no switching is done:
+        switching = false;
+        rows = table.rows;
+        /*Loop through all table rows (except the
+        first, which contains table headers):*/
+        for (i = 1; i < (rows.length - 1); i++) {
+        //start by saying there should be no switching:
+        shouldSwitch = false;
+        /*Get the two elements you want to compare,
+        one from current row and one from the next:*/
+        x = rows[i].getElementsByTagName("TD")[0];
+        y = rows[i + 1].getElementsByTagName("TD")[0];
+        //check if the two rows should switch place:
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+            //if so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+        }
+        }
+        if (shouldSwitch) {
+        /*If a switch has been marked, make the switch
+        and mark that a switch has been done:*/
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+        }
+    }
+    }
+</script>
 </body>
 
 </html>

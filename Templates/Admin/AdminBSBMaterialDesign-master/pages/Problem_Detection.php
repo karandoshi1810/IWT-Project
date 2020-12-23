@@ -34,23 +34,23 @@
 			
 			echo $problem;
 			$sql = "select Sweepers from complain";
-			header("Location:/Project/Templates/Admin/AdminBSBMaterialDesign-master/pages/Sweeper.php");
+			header("Location:Sweeper.php");
 		}
 		else if($problem=="Dustbin Problem")
 		{
 			$sql = "select Dustbin from complain";
-			header("Location:/Project/Templates/Admin/AdminBSBMaterialDesign-master/pages/Dustbin.php");
+			header("Location:Dustbin.php");
 		}
 		else if($problem=="Animals Problem")
 		{
 			$sql = "select Animals from complain";
-			header("Location:/Project/Templates/Admin/AdminBSBMaterialDesign-master/pages/Animals.php");
+			header("Location:Animals.php");
 		}
 		else if($problem=="Other Problems")
 		{
 
 			$sql = "select Others from complain";
-			header("Location:/Project/Templates/Admin/AdminBSBMaterialDesign-master/pages/Others.php");
+			header("Location:Others.php");
 		}
 	  
 	  }

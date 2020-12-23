@@ -8,7 +8,7 @@ if(isset($_POST['login']))
 	//$email_ptrn = /@/i;
 	if(strlen($email)!=0 && strpos($email, '@') !== false && (strpos($email, 'gmail') !== false || strpos($email, 'yahoo') !== false || strpos($email, 'marwadiuniversity.ac.in') !== false ))
 	{
-		if(strlen($pwd)!=0 && strlen($pwd)>6)
+		if(strlen($pwd)!=0 && strlen($pwd)==8)
 		{
 			$sql = "select * from registration where email='".$email."' and password='".$pwd."' ";
 			$result = mysqli_query($conn,$sql);
